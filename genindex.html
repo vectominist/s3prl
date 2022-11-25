@@ -1,0 +1,1828 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="#" /><link rel="search" title="Search" href="search.html" />
+
+    <meta name="generator" content="sphinx-5.1.1, furo 2022.09.29"/><title>Index - S3PRL 0.4.10 documentation</title>
+<link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">S3PRL 0.4.10
+ documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">S3PRL 0.4.10
+ documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/installation.html">Install S3PRL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/upstream_collection.html">S3PRL Upstream Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/problem.html">Use Problem module to run customizable recipes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How to Contribute</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contribute/general.html">General Guideline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute/upstream.html">Adding New Upstream</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="_autosummary/s3prl.dataio.html">dataio</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="_autosummary/s3prl.dataio.collate_fn.html">collate_fn</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="_autosummary/s3prl.dataio.corpus.html">corpus</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/s3prl.dataio.corpus.base.html">base</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/s3prl.dataio.corpus.fluent_speech_commands.html">fluent_speech_commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/s3prl.dataio.corpus.iemocap.html">iemocap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/s3prl.dataio.corpus.librilight.html">librilight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/s3prl.dataio.corpus.librispeech.html">librispeech</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/s3prl.dataio.corpus.quesst14.html">quesst14</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/s3prl.dataio.corpus.snips.html">snips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/s3prl.dataio.corpus.speech_commands.html">speech_commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/s3prl.dataio.corpus.voxceleb1sid.html">voxceleb1sid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/s3prl.dataio.corpus.voxceleb1sv.html">voxceleb1sv</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="_autosummary/s3prl.dataio.dataset.html">dataset</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/s3prl.dataio.dataset.base.html">base</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/s3prl.dataio.dataset.diarization.html">diarization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/s3prl.dataio.dataset.encode.html">encode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/s3prl.dataio.dataset.frame_label.html">frame_label</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/s3prl.dataio.dataset.load_audio.html">load_audio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/s3prl.dataio.dataset.util.html">util</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="_autosummary/s3prl.dataio.encoder.html">encoder</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/s3prl.dataio.encoder.category.html">category</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/s3prl.dataio.encoder.g2p.html">g2p</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/s3prl.dataio.encoder.tokenizer.html">tokenizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/s3prl.dataio.encoder.vocabulary.html">vocabulary</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="_autosummary/s3prl.dataio.sampler.html">sampler</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/s3prl.dataio.sampler.balanced_weighted_sampler.html">balanced_weighted_sampler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/s3prl.dataio.sampler.distributed_sampler.html">distributed_sampler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/s3prl.dataio.sampler.fixed_batch_size_batch_sampler.html">fixed_batch_size_batch_sampler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/s3prl.dataio.sampler.group_same_item_sampler.html">group_same_item_sampler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/s3prl.dataio.sampler.max_timestamp_batch_sampler.html">max_timestamp_batch_sampler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/s3prl.dataio.sampler.sorted_sampler.html">sorted_sampler</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="_autosummary/s3prl.metric.html">metric</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="_autosummary/s3prl.metric.common.html">common</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_autosummary/s3prl.metric.diarization.html">diarization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_autosummary/s3prl.metric.slot_filling.html">slot_filling</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="_autosummary/s3prl.util.html">util</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="_autosummary/s3prl.util.audio_info.html">audio_info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_autosummary/s3prl.util.benchmark.html">benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_autosummary/s3prl.util.download.html">download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_autosummary/s3prl.util.override.html">override</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_autosummary/s3prl.util.pseudo_data.html">pseudo_data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_autosummary/s3prl.util.seed.html">seed</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          
+<section class="genindex-section">
+  <h1 id="index">Index</h1>
+  <div class="genindex-jumpbox"><a href="#A"><strong>A</strong></a> | <a href="#B"><strong>B</strong></a> | <a href="#C"><strong>C</strong></a> | <a href="#D"><strong>D</strong></a> | <a href="#E"><strong>E</strong></a> | <a href="#F"><strong>F</strong></a> | <a href="#G"><strong>G</strong></a> | <a href="#I"><strong>I</strong></a> | <a href="#K"><strong>K</strong></a> | <a href="#L"><strong>L</strong></a> | <a href="#M"><strong>M</strong></a> | <a href="#P"><strong>P</strong></a> | <a href="#Q"><strong>Q</strong></a> | <a href="#S"><strong>S</strong></a> | <a href="#T"><strong>T</strong></a> | <a href="#U"><strong>U</strong></a> | <a href="#V"><strong>V</strong></a> | <a href="#W"><strong>W</strong></a></div>
+</section>
+<section id="A" class="genindex-section">
+  <h2>A</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="_autosummary/s3prl.metric.html#s3prl.metric.accuracy">accuracy() (in module s3prl.metric)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.metric.common.html#s3prl.metric.common.accuracy">(in module s3prl.metric.common)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.corpus.base.html#s3prl.dataio.corpus.base.Corpus.all_data">all_data (s3prl.dataio.corpus.base.Corpus property)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.fluent_speech_commands.html#s3prl.dataio.corpus.fluent_speech_commands.FluentSpeechCommands.all_data">(s3prl.dataio.corpus.fluent_speech_commands.FluentSpeechCommands property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.FluentSpeechCommands.all_data">(s3prl.dataio.corpus.FluentSpeechCommands property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.IEMOCAP.all_data">(s3prl.dataio.corpus.IEMOCAP property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.iemocap.html#s3prl.dataio.corpus.iemocap.IEMOCAP.all_data">(s3prl.dataio.corpus.iemocap.IEMOCAP property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.LibriLight.all_data">(s3prl.dataio.corpus.LibriLight property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.librilight.html#s3prl.dataio.corpus.librilight.LibriLight.all_data">(s3prl.dataio.corpus.librilight.LibriLight property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.LibriSpeech.all_data">(s3prl.dataio.corpus.LibriSpeech property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.librispeech.html#s3prl.dataio.corpus.librispeech.LibriSpeech.all_data">(s3prl.dataio.corpus.librispeech.LibriSpeech property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.SNIPS.all_data">(s3prl.dataio.corpus.SNIPS property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.snips.html#s3prl.dataio.corpus.snips.SNIPS.all_data">(s3prl.dataio.corpus.snips.SNIPS property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.speech_commands.html#s3prl.dataio.corpus.speech_commands.SpeechCommandsV1.all_data">(s3prl.dataio.corpus.speech_commands.SpeechCommandsV1 property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.SpeechCommandsV1.all_data">(s3prl.dataio.corpus.SpeechCommandsV1 property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.VoxCeleb1SID.all_data">(s3prl.dataio.corpus.VoxCeleb1SID property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.voxceleb1sid.html#s3prl.dataio.corpus.voxceleb1sid.VoxCeleb1SID.all_data">(s3prl.dataio.corpus.voxceleb1sid.VoxCeleb1SID property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.VoxCeleb1SV.all_data">(s3prl.dataio.corpus.VoxCeleb1SV property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.voxceleb1sv.html#s3prl.dataio.corpus.voxceleb1sv.VoxCeleb1SV.all_data">(s3prl.dataio.corpus.voxceleb1sv.VoxCeleb1SV property)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="B" class="genindex-section">
+  <h2>B</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="_autosummary/s3prl.dataio.sampler.html#s3prl.dataio.sampler.BalancedWeightedSampler">BalancedWeightedSampler (class in s3prl.dataio.sampler)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.sampler.balanced_weighted_sampler.html#s3prl.dataio.sampler.balanced_weighted_sampler.BalancedWeightedSampler">(class in s3prl.dataio.sampler.balanced_weighted_sampler)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="_autosummary/s3prl.util.benchmark.html#s3prl.util.benchmark.benchmark">benchmark (class in s3prl.util.benchmark)</a>
+</li>
+        <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.BertTokenizer">BertTokenizer (class in s3prl.dataio.encoder)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="C" class="genindex-section">
+  <h2>C</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="_autosummary/s3prl.metric.html#s3prl.metric.calc_diarization_error">calc_diarization_error() (in module s3prl.metric)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.metric.diarization.html#s3prl.metric.diarization.calc_diarization_error">(in module s3prl.metric.diarization)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.CategoryEncoder">CategoryEncoder (class in s3prl.dataio.encoder)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.encoder.category.html#s3prl.dataio.encoder.category.CategoryEncoder">(class in s3prl.dataio.encoder.category)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.CategoryEncoders">CategoryEncoders (class in s3prl.dataio.encoder)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.encoder.category.html#s3prl.dataio.encoder.category.CategoryEncoders">(class in s3prl.dataio.encoder.category)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.metric.html#s3prl.metric.cer">cer() (in module s3prl.metric)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.metric.common.html#s3prl.metric.common.cer">(in module s3prl.metric.common)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.CharacterSlotTokenizer">CharacterSlotTokenizer (class in s3prl.dataio.encoder)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.CharacterSlotTokenizer">(class in s3prl.dataio.encoder.tokenizer)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.CharacterTokenizer">CharacterTokenizer (class in s3prl.dataio.encoder)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.CharacterTokenizer">(class in s3prl.dataio.encoder.tokenizer)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.dataset.frame_label.html#s3prl.dataio.dataset.frame_label.chunk_labels_to_frame_tensor_label">chunk_labels_to_frame_tensor_label() (in module s3prl.dataio.dataset.frame_label)</a>
+</li>
+        <li><a href="_autosummary/s3prl.dataio.dataset.frame_label.html#s3prl.dataio.dataset.frame_label.chunking">chunking() (in module s3prl.dataio.dataset.frame_label)</a>
+</li>
+        <li><a href="_autosummary/s3prl.metric.html#s3prl.metric.compute_eer">compute_eer() (in module s3prl.metric)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.metric.common.html#s3prl.metric.common.compute_eer">(in module s3prl.metric.common)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.metric.html#s3prl.metric.compute_minDCF">compute_minDCF() (in module s3prl.metric)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.metric.common.html#s3prl.metric.common.compute_minDCF">(in module s3prl.metric.common)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.corpus.base.html#s3prl.dataio.corpus.base.Corpus">Corpus (class in s3prl.dataio.corpus.base)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="D" class="genindex-section">
+  <h2>D</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="_autosummary/s3prl.dataio.corpus.base.html#s3prl.dataio.corpus.base.Corpus.data_split">data_split (s3prl.dataio.corpus.base.Corpus property)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.fluent_speech_commands.html#s3prl.dataio.corpus.fluent_speech_commands.FluentSpeechCommands.data_split">(s3prl.dataio.corpus.fluent_speech_commands.FluentSpeechCommands property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.FluentSpeechCommands.data_split">(s3prl.dataio.corpus.FluentSpeechCommands property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.IEMOCAP.data_split">(s3prl.dataio.corpus.IEMOCAP property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.iemocap.html#s3prl.dataio.corpus.iemocap.IEMOCAP.data_split">(s3prl.dataio.corpus.iemocap.IEMOCAP property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.LibriLight.data_split">(s3prl.dataio.corpus.LibriLight property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.librilight.html#s3prl.dataio.corpus.librilight.LibriLight.data_split">(s3prl.dataio.corpus.librilight.LibriLight property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.LibriSpeech.data_split">(s3prl.dataio.corpus.LibriSpeech property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.librispeech.html#s3prl.dataio.corpus.librispeech.LibriSpeech.data_split">(s3prl.dataio.corpus.librispeech.LibriSpeech property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.SNIPS.data_split">(s3prl.dataio.corpus.SNIPS property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.snips.html#s3prl.dataio.corpus.snips.SNIPS.data_split">(s3prl.dataio.corpus.snips.SNIPS property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.speech_commands.html#s3prl.dataio.corpus.speech_commands.SpeechCommandsV1.data_split">(s3prl.dataio.corpus.speech_commands.SpeechCommandsV1 property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.SpeechCommandsV1.data_split">(s3prl.dataio.corpus.SpeechCommandsV1 property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.VoxCeleb1SID.data_split">(s3prl.dataio.corpus.VoxCeleb1SID property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.voxceleb1sid.html#s3prl.dataio.corpus.voxceleb1sid.VoxCeleb1SID.data_split">(s3prl.dataio.corpus.voxceleb1sid.VoxCeleb1SID property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.VoxCeleb1SV.data_split">(s3prl.dataio.corpus.VoxCeleb1SV property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.voxceleb1sv.html#s3prl.dataio.corpus.voxceleb1sv.VoxCeleb1SV.data_split">(s3prl.dataio.corpus.voxceleb1sv.VoxCeleb1SV property)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.corpus.base.html#s3prl.dataio.corpus.base.Corpus.data_split_ids">data_split_ids (s3prl.dataio.corpus.base.Corpus property)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.fluent_speech_commands.html#s3prl.dataio.corpus.fluent_speech_commands.FluentSpeechCommands.data_split_ids">(s3prl.dataio.corpus.fluent_speech_commands.FluentSpeechCommands property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.FluentSpeechCommands.data_split_ids">(s3prl.dataio.corpus.FluentSpeechCommands property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.IEMOCAP.data_split_ids">(s3prl.dataio.corpus.IEMOCAP property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.iemocap.html#s3prl.dataio.corpus.iemocap.IEMOCAP.data_split_ids">(s3prl.dataio.corpus.iemocap.IEMOCAP property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.LibriLight.data_split_ids">(s3prl.dataio.corpus.LibriLight property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.librilight.html#s3prl.dataio.corpus.librilight.LibriLight.data_split_ids">(s3prl.dataio.corpus.librilight.LibriLight property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.LibriSpeech.data_split_ids">(s3prl.dataio.corpus.LibriSpeech property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.librispeech.html#s3prl.dataio.corpus.librispeech.LibriSpeech.data_split_ids">(s3prl.dataio.corpus.librispeech.LibriSpeech property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.SNIPS.data_split_ids">(s3prl.dataio.corpus.SNIPS property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.snips.html#s3prl.dataio.corpus.snips.SNIPS.data_split_ids">(s3prl.dataio.corpus.snips.SNIPS property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.speech_commands.html#s3prl.dataio.corpus.speech_commands.SpeechCommandsV1.data_split_ids">(s3prl.dataio.corpus.speech_commands.SpeechCommandsV1 property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.SpeechCommandsV1.data_split_ids">(s3prl.dataio.corpus.SpeechCommandsV1 property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.VoxCeleb1SID.data_split_ids">(s3prl.dataio.corpus.VoxCeleb1SID property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.voxceleb1sid.html#s3prl.dataio.corpus.voxceleb1sid.VoxCeleb1SID.data_split_ids">(s3prl.dataio.corpus.voxceleb1sid.VoxCeleb1SID property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.VoxCeleb1SV.data_split_ids">(s3prl.dataio.corpus.VoxCeleb1SV property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.voxceleb1sv.html#s3prl.dataio.corpus.voxceleb1sv.VoxCeleb1SV.data_split_ids">(s3prl.dataio.corpus.voxceleb1sv.VoxCeleb1SV property)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.corpus.base.html#s3prl.dataio.corpus.base.Corpus.dataframe_to_datapoints">dataframe_to_datapoints() (s3prl.dataio.corpus.base.Corpus static method)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.fluent_speech_commands.html#s3prl.dataio.corpus.fluent_speech_commands.FluentSpeechCommands.dataframe_to_datapoints">(s3prl.dataio.corpus.fluent_speech_commands.FluentSpeechCommands static method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.FluentSpeechCommands.dataframe_to_datapoints">(s3prl.dataio.corpus.FluentSpeechCommands static method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.IEMOCAP.dataframe_to_datapoints">(s3prl.dataio.corpus.IEMOCAP static method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.iemocap.html#s3prl.dataio.corpus.iemocap.IEMOCAP.dataframe_to_datapoints">(s3prl.dataio.corpus.iemocap.IEMOCAP static method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.LibriLight.dataframe_to_datapoints">(s3prl.dataio.corpus.LibriLight static method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.librilight.html#s3prl.dataio.corpus.librilight.LibriLight.dataframe_to_datapoints">(s3prl.dataio.corpus.librilight.LibriLight static method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.LibriSpeech.dataframe_to_datapoints">(s3prl.dataio.corpus.LibriSpeech static method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.librispeech.html#s3prl.dataio.corpus.librispeech.LibriSpeech.dataframe_to_datapoints">(s3prl.dataio.corpus.librispeech.LibriSpeech static method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.SNIPS.dataframe_to_datapoints">(s3prl.dataio.corpus.SNIPS static method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.snips.html#s3prl.dataio.corpus.snips.SNIPS.dataframe_to_datapoints">(s3prl.dataio.corpus.snips.SNIPS static method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.speech_commands.html#s3prl.dataio.corpus.speech_commands.SpeechCommandsV1.dataframe_to_datapoints">(s3prl.dataio.corpus.speech_commands.SpeechCommandsV1 static method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.SpeechCommandsV1.dataframe_to_datapoints">(s3prl.dataio.corpus.SpeechCommandsV1 static method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.VoxCeleb1SID.dataframe_to_datapoints">(s3prl.dataio.corpus.VoxCeleb1SID static method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.voxceleb1sid.html#s3prl.dataio.corpus.voxceleb1sid.VoxCeleb1SID.dataframe_to_datapoints">(s3prl.dataio.corpus.voxceleb1sid.VoxCeleb1SID static method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.VoxCeleb1SV.dataframe_to_datapoints">(s3prl.dataio.corpus.VoxCeleb1SV static method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.voxceleb1sv.html#s3prl.dataio.corpus.voxceleb1sv.VoxCeleb1SV.dataframe_to_datapoints">(s3prl.dataio.corpus.voxceleb1sv.VoxCeleb1SV static method)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="_autosummary/s3prl.dataio.dataset.html#s3prl.dataio.dataset.Dataset">Dataset (class in s3prl.dataio.dataset)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.dataset.base.html#s3prl.dataio.dataset.base.Dataset">(class in s3prl.dataio.dataset.base)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.dataset.diarization.html#s3prl.dataio.dataset.diarization.Dataset">(class in s3prl.dataio.dataset.diarization)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.dataset.load_audio.html#s3prl.dataio.dataset.load_audio.Dataset">(class in s3prl.dataio.dataset.load_audio)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.BertTokenizer.decode">decode() (s3prl.dataio.encoder.BertTokenizer method)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.encoder.category.html#s3prl.dataio.encoder.category.CategoryEncoder.decode">(s3prl.dataio.encoder.category.CategoryEncoder method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.category.html#s3prl.dataio.encoder.category.CategoryEncoders.decode">(s3prl.dataio.encoder.category.CategoryEncoders method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.CategoryEncoder.decode">(s3prl.dataio.encoder.CategoryEncoder method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.CategoryEncoders.decode">(s3prl.dataio.encoder.CategoryEncoders method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.CharacterSlotTokenizer.decode">(s3prl.dataio.encoder.CharacterSlotTokenizer method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.CharacterTokenizer.decode">(s3prl.dataio.encoder.CharacterTokenizer method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.SubwordSlotTokenizer.decode">(s3prl.dataio.encoder.SubwordSlotTokenizer method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.SubwordTokenizer.decode">(s3prl.dataio.encoder.SubwordTokenizer method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.Tokenizer.decode">(s3prl.dataio.encoder.Tokenizer method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.CharacterSlotTokenizer.decode">(s3prl.dataio.encoder.tokenizer.CharacterSlotTokenizer method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.CharacterTokenizer.decode">(s3prl.dataio.encoder.tokenizer.CharacterTokenizer method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.PhonemeTokenizer.decode">(s3prl.dataio.encoder.tokenizer.PhonemeTokenizer method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.SubwordSlotTokenizer.decode">(s3prl.dataio.encoder.tokenizer.SubwordSlotTokenizer method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.SubwordTokenizer.decode">(s3prl.dataio.encoder.tokenizer.SubwordTokenizer method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.WordTokenizer.decode">(s3prl.dataio.encoder.tokenizer.WordTokenizer method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.WordTokenizer.decode">(s3prl.dataio.encoder.WordTokenizer method)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.collate_fn.html#s3prl.dataio.collate_fn.default_collate_fn">default_collate_fn() (in module s3prl.dataio.collate_fn)</a>
+</li>
+        <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.default_phoneme_tokenizer">default_phoneme_tokenizer() (in module s3prl.dataio.encoder.tokenizer)</a>
+</li>
+        <li><a href="_autosummary/s3prl.dataio.dataset.html#s3prl.dataio.dataset.DiarizationDataset">DiarizationDataset (class in s3prl.dataio.dataset)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.dataset.diarization.html#s3prl.dataio.dataset.diarization.DiarizationDataset">(class in s3prl.dataio.dataset.diarization)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.sampler.html#s3prl.dataio.sampler.DistributedBatchSamplerWrapper">DistributedBatchSamplerWrapper (class in s3prl.dataio.sampler)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.sampler.distributed_sampler.html#s3prl.dataio.sampler.distributed_sampler.DistributedBatchSamplerWrapper">(class in s3prl.dataio.sampler.distributed_sampler)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.Quesst14.docs">docs (s3prl.dataio.corpus.Quesst14 property)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.quesst14.html#s3prl.dataio.corpus.quesst14.Quesst14.docs">(s3prl.dataio.corpus.quesst14.Quesst14 property)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.util.download.html#s3prl.util.download.download">download() (in module s3prl.util.download)</a>
+</li>
+        <li><a href="_autosummary/s3prl.dataio.corpus.fluent_speech_commands.html#s3prl.dataio.corpus.fluent_speech_commands.FluentSpeechCommands.download_dataset">download_dataset() (s3prl.dataio.corpus.fluent_speech_commands.FluentSpeechCommands class method)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.FluentSpeechCommands.download_dataset">(s3prl.dataio.corpus.FluentSpeechCommands class method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.IEMOCAP.download_dataset">(s3prl.dataio.corpus.IEMOCAP class method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.iemocap.html#s3prl.dataio.corpus.iemocap.IEMOCAP.download_dataset">(s3prl.dataio.corpus.iemocap.IEMOCAP class method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.LibriLight.download_dataset">(s3prl.dataio.corpus.LibriLight class method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.librilight.html#s3prl.dataio.corpus.librilight.LibriLight.download_dataset">(s3prl.dataio.corpus.librilight.LibriLight class method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.LibriSpeech.download_dataset">(s3prl.dataio.corpus.LibriSpeech class method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.librispeech.html#s3prl.dataio.corpus.librispeech.LibriSpeech.download_dataset">(s3prl.dataio.corpus.librispeech.LibriSpeech class method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.Quesst14.download_dataset">(s3prl.dataio.corpus.Quesst14 class method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.quesst14.html#s3prl.dataio.corpus.quesst14.Quesst14.download_dataset">(s3prl.dataio.corpus.quesst14.Quesst14 class method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.speech_commands.html#s3prl.dataio.corpus.speech_commands.SpeechCommandsV1.download_dataset">(s3prl.dataio.corpus.speech_commands.SpeechCommandsV1 class method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.SpeechCommandsV1.download_dataset">(s3prl.dataio.corpus.SpeechCommandsV1 class method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.VoxCeleb1SID.download_dataset">(s3prl.dataio.corpus.VoxCeleb1SID class method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.voxceleb1sid.html#s3prl.dataio.corpus.voxceleb1sid.VoxCeleb1SID.download_dataset">(s3prl.dataio.corpus.voxceleb1sid.VoxCeleb1SID class method)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="E" class="genindex-section">
+  <h2>E</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.BertTokenizer.encode">encode() (s3prl.dataio.encoder.BertTokenizer method)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.encoder.category.html#s3prl.dataio.encoder.category.CategoryEncoder.encode">(s3prl.dataio.encoder.category.CategoryEncoder method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.category.html#s3prl.dataio.encoder.category.CategoryEncoders.encode">(s3prl.dataio.encoder.category.CategoryEncoders method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.CategoryEncoder.encode">(s3prl.dataio.encoder.CategoryEncoder method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.CategoryEncoders.encode">(s3prl.dataio.encoder.CategoryEncoders method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.CharacterSlotTokenizer.encode">(s3prl.dataio.encoder.CharacterSlotTokenizer method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.CharacterTokenizer.encode">(s3prl.dataio.encoder.CharacterTokenizer method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.G2P.encode">(s3prl.dataio.encoder.G2P method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.g2p.html#s3prl.dataio.encoder.g2p.G2P.encode">(s3prl.dataio.encoder.g2p.G2P method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.SubwordSlotTokenizer.encode">(s3prl.dataio.encoder.SubwordSlotTokenizer method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.SubwordTokenizer.encode">(s3prl.dataio.encoder.SubwordTokenizer method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.Tokenizer.encode">(s3prl.dataio.encoder.Tokenizer method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.CharacterSlotTokenizer.encode">(s3prl.dataio.encoder.tokenizer.CharacterSlotTokenizer method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.CharacterTokenizer.encode">(s3prl.dataio.encoder.tokenizer.CharacterTokenizer method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.PhonemeTokenizer.encode">(s3prl.dataio.encoder.tokenizer.PhonemeTokenizer method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.SubwordSlotTokenizer.encode">(s3prl.dataio.encoder.tokenizer.SubwordSlotTokenizer method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.SubwordTokenizer.encode">(s3prl.dataio.encoder.tokenizer.SubwordTokenizer method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.WordTokenizer.encode">(s3prl.dataio.encoder.tokenizer.WordTokenizer method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.WordTokenizer.encode">(s3prl.dataio.encoder.WordTokenizer method)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.dataset.html#s3prl.dataio.dataset.EncodeCategories">EncodeCategories (class in s3prl.dataio.dataset)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.dataset.encode.html#s3prl.dataio.dataset.encode.EncodeCategories">(class in s3prl.dataio.dataset.encode)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="_autosummary/s3prl.dataio.dataset.html#s3prl.dataio.dataset.EncodeCategory">EncodeCategory (class in s3prl.dataio.dataset)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.dataset.encode.html#s3prl.dataio.dataset.encode.EncodeCategory">(class in s3prl.dataio.dataset.encode)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.dataset.html#s3prl.dataio.dataset.EncodeMultiLabel">EncodeMultiLabel (class in s3prl.dataio.dataset)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.dataset.encode.html#s3prl.dataio.dataset.encode.EncodeMultiLabel">(class in s3prl.dataio.dataset.encode)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.dataset.html#s3prl.dataio.dataset.EncodeText">EncodeText (class in s3prl.dataio.dataset)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.dataset.encode.html#s3prl.dataio.dataset.encode.EncodeText">(class in s3prl.dataio.dataset.encode)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.BertTokenizer.eos_idx">eos_idx (s3prl.dataio.encoder.BertTokenizer property)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.CharacterSlotTokenizer.eos_idx">(s3prl.dataio.encoder.CharacterSlotTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.CharacterTokenizer.eos_idx">(s3prl.dataio.encoder.CharacterTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.SubwordSlotTokenizer.eos_idx">(s3prl.dataio.encoder.SubwordSlotTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.SubwordTokenizer.eos_idx">(s3prl.dataio.encoder.SubwordTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.Tokenizer.eos_idx">(s3prl.dataio.encoder.Tokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.CharacterSlotTokenizer.eos_idx">(s3prl.dataio.encoder.tokenizer.CharacterSlotTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.CharacterTokenizer.eos_idx">(s3prl.dataio.encoder.tokenizer.CharacterTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.PhonemeTokenizer.eos_idx">(s3prl.dataio.encoder.tokenizer.PhonemeTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.SubwordSlotTokenizer.eos_idx">(s3prl.dataio.encoder.tokenizer.SubwordSlotTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.SubwordTokenizer.eos_idx">(s3prl.dataio.encoder.tokenizer.SubwordTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.WordTokenizer.eos_idx">(s3prl.dataio.encoder.tokenizer.WordTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.WordTokenizer.eos_idx">(s3prl.dataio.encoder.WordTokenizer property)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="F" class="genindex-section">
+  <h2>F</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="_autosummary/s3prl.util.seed.html#s3prl.util.seed.fix_random_seeds">fix_random_seeds() (in module s3prl.util.seed)</a>
+</li>
+        <li><a href="_autosummary/s3prl.dataio.sampler.html#s3prl.dataio.sampler.FixedBatchSizeBatchSampler">FixedBatchSizeBatchSampler (class in s3prl.dataio.sampler)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.sampler.fixed_batch_size_batch_sampler.html#s3prl.dataio.sampler.fixed_batch_size_batch_sampler.FixedBatchSizeBatchSampler">(class in s3prl.dataio.sampler.fixed_batch_size_batch_sampler)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.FluentSpeechCommands">FluentSpeechCommands (class in s3prl.dataio.corpus)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.fluent_speech_commands.html#s3prl.dataio.corpus.fluent_speech_commands.FluentSpeechCommands">(class in s3prl.dataio.corpus.fluent_speech_commands)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.VoxCeleb1SV.format_path">format_path() (s3prl.dataio.corpus.VoxCeleb1SV static method)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.voxceleb1sv.html#s3prl.dataio.corpus.voxceleb1sv.VoxCeleb1SV.format_path">(s3prl.dataio.corpus.voxceleb1sv.VoxCeleb1SV static method)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.VoxCeleb1SV.format_test_trials">format_test_trials() (s3prl.dataio.corpus.VoxCeleb1SV class method)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.voxceleb1sv.html#s3prl.dataio.corpus.voxceleb1sv.VoxCeleb1SV.format_test_trials">(s3prl.dataio.corpus.voxceleb1sv.VoxCeleb1SV class method)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.dataset.html#s3prl.dataio.dataset.FrameLabelDataset">FrameLabelDataset (class in s3prl.dataio.dataset)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.dataset.frame_label.html#s3prl.dataio.dataset.frame_label.FrameLabelDataset">(class in s3prl.dataio.dataset.frame_label)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="G" class="genindex-section">
+  <h2>G</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.G2P">G2P (class in s3prl.dataio.encoder)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.encoder.g2p.html#s3prl.dataio.encoder.g2p.G2P">(class in s3prl.dataio.encoder.g2p)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.generate_basic_vocab">generate_basic_vocab() (in module s3prl.dataio.encoder)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.encoder.vocabulary.html#s3prl.dataio.encoder.vocabulary.generate_basic_vocab">(in module s3prl.dataio.encoder.vocabulary)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.generate_subword_vocab">generate_subword_vocab() (in module s3prl.dataio.encoder)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.encoder.vocabulary.html#s3prl.dataio.encoder.vocabulary.generate_subword_vocab">(in module s3prl.dataio.encoder.vocabulary)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.generate_vocab">generate_vocab() (in module s3prl.dataio.encoder)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.encoder.vocabulary.html#s3prl.dataio.encoder.vocabulary.generate_vocab">(in module s3prl.dataio.encoder.vocabulary)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.util.audio_info.html#s3prl.util.audio_info.get_audio_info">get_audio_info() (in module s3prl.util.audio_info)</a>
+</li>
+        <li><a href="_autosummary/s3prl.util.audio_info.html#s3prl.util.audio_info.get_cache_dir">get_cache_dir() (in module s3prl.util.audio_info)</a>
+</li>
+        <li><a href="_autosummary/s3prl.dataio.dataset.frame_label.html#s3prl.dataio.dataset.frame_label.get_chunk_labels">get_chunk_labels() (in module s3prl.dataio.dataset.frame_label)</a>
+</li>
+        <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.LibriSpeech.get_corpus_splits">get_corpus_splits() (s3prl.dataio.corpus.LibriSpeech method)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.librispeech.html#s3prl.dataio.corpus.librispeech.LibriSpeech.get_corpus_splits">(s3prl.dataio.corpus.librispeech.LibriSpeech method)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.util.download.html#s3prl.util.download.get_dir">get_dir() (in module s3prl.util.download)</a>
+</li>
+        <li><a href="_autosummary/s3prl.dataio.dataset.html#s3prl.dataio.dataset.get_info">get_info() (in module s3prl.dataio.dataset)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.dataset.util.html#s3prl.dataio.dataset.util.get_info">(in module s3prl.dataio.dataset.util)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.util.pseudo_data.html#s3prl.util.pseudo_data.get_pseudo_wavs">get_pseudo_wavs() (in module s3prl.util.pseudo_data)</a>
+</li>
+        <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.IEMOCAP.get_session_with_act">get_session_with_act() (s3prl.dataio.corpus.IEMOCAP method)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.iemocap.html#s3prl.dataio.corpus.iemocap.IEMOCAP.get_session_with_act">(s3prl.dataio.corpus.iemocap.IEMOCAP method)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.IEMOCAP.get_whole_session">get_whole_session() (s3prl.dataio.corpus.IEMOCAP method)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.iemocap.html#s3prl.dataio.corpus.iemocap.IEMOCAP.get_whole_session">(s3prl.dataio.corpus.iemocap.IEMOCAP method)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="_autosummary/s3prl.dataio.dataset.base.html#s3prl.dataio.dataset.base.Dataset.getinfo">getinfo() (s3prl.dataio.dataset.base.Dataset method)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.dataset.html#s3prl.dataio.dataset.Dataset.getinfo">(s3prl.dataio.dataset.Dataset method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.dataset.diarization.html#s3prl.dataio.dataset.diarization.Dataset.getinfo">(s3prl.dataio.dataset.diarization.Dataset method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.dataset.diarization.html#s3prl.dataio.dataset.diarization.DiarizationDataset.getinfo">(s3prl.dataio.dataset.diarization.DiarizationDataset method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.dataset.html#s3prl.dataio.dataset.DiarizationDataset.getinfo">(s3prl.dataio.dataset.DiarizationDataset method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.dataset.encode.html#s3prl.dataio.dataset.encode.EncodeCategories.getinfo">(s3prl.dataio.dataset.encode.EncodeCategories method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.dataset.encode.html#s3prl.dataio.dataset.encode.EncodeCategory.getinfo">(s3prl.dataio.dataset.encode.EncodeCategory method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.dataset.encode.html#s3prl.dataio.dataset.encode.EncodeMultiLabel.getinfo">(s3prl.dataio.dataset.encode.EncodeMultiLabel method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.dataset.encode.html#s3prl.dataio.dataset.encode.EncodeText.getinfo">(s3prl.dataio.dataset.encode.EncodeText method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.dataset.html#s3prl.dataio.dataset.EncodeCategories.getinfo">(s3prl.dataio.dataset.EncodeCategories method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.dataset.html#s3prl.dataio.dataset.EncodeCategory.getinfo">(s3prl.dataio.dataset.EncodeCategory method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.dataset.html#s3prl.dataio.dataset.EncodeMultiLabel.getinfo">(s3prl.dataio.dataset.EncodeMultiLabel method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.dataset.html#s3prl.dataio.dataset.EncodeText.getinfo">(s3prl.dataio.dataset.EncodeText method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.dataset.frame_label.html#s3prl.dataio.dataset.frame_label.FrameLabelDataset.getinfo">(s3prl.dataio.dataset.frame_label.FrameLabelDataset method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.dataset.html#s3prl.dataio.dataset.FrameLabelDataset.getinfo">(s3prl.dataio.dataset.FrameLabelDataset method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.dataset.load_audio.html#s3prl.dataio.dataset.load_audio.Dataset.getinfo">(s3prl.dataio.dataset.load_audio.Dataset method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.dataset.load_audio.html#s3prl.dataio.dataset.load_audio.LoadAudio.getinfo">(s3prl.dataio.dataset.load_audio.LoadAudio method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.dataset.html#s3prl.dataio.dataset.LoadAudio.getinfo">(s3prl.dataio.dataset.LoadAudio method)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.sampler.html#s3prl.dataio.sampler.GroupSameItemSampler">GroupSameItemSampler (class in s3prl.dataio.sampler)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.sampler.group_same_item_sampler.html#s3prl.dataio.sampler.group_same_item_sampler.GroupSameItemSampler">(class in s3prl.dataio.sampler.group_same_item_sampler)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="I" class="genindex-section">
+  <h2>I</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.CharacterSlotTokenizer.idx_to_vocab">idx_to_vocab() (s3prl.dataio.encoder.CharacterSlotTokenizer method)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.CharacterTokenizer.idx_to_vocab">(s3prl.dataio.encoder.CharacterTokenizer method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.CharacterSlotTokenizer.idx_to_vocab">(s3prl.dataio.encoder.tokenizer.CharacterSlotTokenizer method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.CharacterTokenizer.idx_to_vocab">(s3prl.dataio.encoder.tokenizer.CharacterTokenizer method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.PhonemeTokenizer.idx_to_vocab">(s3prl.dataio.encoder.tokenizer.PhonemeTokenizer method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.WordTokenizer.idx_to_vocab">(s3prl.dataio.encoder.tokenizer.WordTokenizer method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.WordTokenizer.idx_to_vocab">(s3prl.dataio.encoder.WordTokenizer method)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.IEMOCAP">IEMOCAP (class in s3prl.dataio.corpus)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.iemocap.html#s3prl.dataio.corpus.iemocap.IEMOCAP">(class in s3prl.dataio.corpus.iemocap)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="K" class="genindex-section">
+  <h2>K</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="_autosummary/s3prl.dataio.dataset.diarization.html#s3prl.dataio.dataset.diarization.KaldiData">KaldiData (class in s3prl.dataio.dataset.diarization)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="L" class="genindex-section">
+  <h2>L</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="_autosummary/s3prl.dataio.dataset.encode.html#s3prl.dataio.dataset.encode.EncodeMultiLabel.label_to_binary_vector">label_to_binary_vector() (s3prl.dataio.dataset.encode.EncodeMultiLabel static method)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.dataset.html#s3prl.dataio.dataset.EncodeMultiLabel.label_to_binary_vector">(s3prl.dataio.dataset.EncodeMultiLabel static method)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.LibriLight">LibriLight (class in s3prl.dataio.corpus)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.librilight.html#s3prl.dataio.corpus.librilight.LibriLight">(class in s3prl.dataio.corpus.librilight)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.LibriSpeech">LibriSpeech (class in s3prl.dataio.corpus)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.librispeech.html#s3prl.dataio.corpus.librispeech.LibriSpeech">(class in s3prl.dataio.corpus.librispeech)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.corpus.speech_commands.html#s3prl.dataio.corpus.speech_commands.SpeechCommandsV1.list_to_dict">list_to_dict() (s3prl.dataio.corpus.speech_commands.SpeechCommandsV1 class method)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.SpeechCommandsV1.list_to_dict">(s3prl.dataio.corpus.SpeechCommandsV1 class method)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.BertTokenizer.load_from_file">load_from_file() (s3prl.dataio.encoder.BertTokenizer class method)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.CharacterSlotTokenizer.load_from_file">(s3prl.dataio.encoder.CharacterSlotTokenizer class method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.CharacterTokenizer.load_from_file">(s3prl.dataio.encoder.CharacterTokenizer class method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.SubwordSlotTokenizer.load_from_file">(s3prl.dataio.encoder.SubwordSlotTokenizer class method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.SubwordTokenizer.load_from_file">(s3prl.dataio.encoder.SubwordTokenizer class method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.Tokenizer.load_from_file">(s3prl.dataio.encoder.Tokenizer class method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.CharacterSlotTokenizer.load_from_file">(s3prl.dataio.encoder.tokenizer.CharacterSlotTokenizer class method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.CharacterTokenizer.load_from_file">(s3prl.dataio.encoder.tokenizer.CharacterTokenizer class method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.PhonemeTokenizer.load_from_file">(s3prl.dataio.encoder.tokenizer.PhonemeTokenizer class method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.SubwordSlotTokenizer.load_from_file">(s3prl.dataio.encoder.tokenizer.SubwordSlotTokenizer class method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.SubwordTokenizer.load_from_file">(s3prl.dataio.encoder.tokenizer.SubwordTokenizer class method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.WordTokenizer.load_from_file">(s3prl.dataio.encoder.tokenizer.WordTokenizer class method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.WordTokenizer.load_from_file">(s3prl.dataio.encoder.WordTokenizer class method)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.load_tokenizer">load_tokenizer() (in module s3prl.dataio.encoder.tokenizer)</a>
+</li>
+        <li><a href="_autosummary/s3prl.dataio.dataset.diarization.html#s3prl.dataio.dataset.diarization.KaldiData.load_wav">load_wav() (s3prl.dataio.dataset.diarization.KaldiData method)</a>
+</li>
+        <li><a href="_autosummary/s3prl.dataio.dataset.html#s3prl.dataio.dataset.LoadAudio">LoadAudio (class in s3prl.dataio.dataset)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.dataset.load_audio.html#s3prl.dataio.dataset.load_audio.LoadAudio">(class in s3prl.dataio.dataset.load_audio)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="M" class="genindex-section">
+  <h2>M</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="_autosummary/s3prl.dataio.sampler.html#s3prl.dataio.sampler.MaxTimestampBatchSampler">MaxTimestampBatchSampler (class in s3prl.dataio.sampler)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.sampler.max_timestamp_batch_sampler.html#s3prl.dataio.sampler.max_timestamp_batch_sampler.MaxTimestampBatchSampler">(class in s3prl.dataio.sampler.max_timestamp_batch_sampler)</a>
+</li>
+        </ul></li>
+        <li>
+    module
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.html#module-s3prl.dataio">s3prl.dataio</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.collate_fn.html#module-s3prl.dataio.collate_fn">s3prl.dataio.collate_fn</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#module-s3prl.dataio.corpus">s3prl.dataio.corpus</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.base.html#module-s3prl.dataio.corpus.base">s3prl.dataio.corpus.base</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.fluent_speech_commands.html#module-s3prl.dataio.corpus.fluent_speech_commands">s3prl.dataio.corpus.fluent_speech_commands</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.iemocap.html#module-s3prl.dataio.corpus.iemocap">s3prl.dataio.corpus.iemocap</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.librilight.html#module-s3prl.dataio.corpus.librilight">s3prl.dataio.corpus.librilight</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.librispeech.html#module-s3prl.dataio.corpus.librispeech">s3prl.dataio.corpus.librispeech</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.quesst14.html#module-s3prl.dataio.corpus.quesst14">s3prl.dataio.corpus.quesst14</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.snips.html#module-s3prl.dataio.corpus.snips">s3prl.dataio.corpus.snips</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.speech_commands.html#module-s3prl.dataio.corpus.speech_commands">s3prl.dataio.corpus.speech_commands</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.voxceleb1sid.html#module-s3prl.dataio.corpus.voxceleb1sid">s3prl.dataio.corpus.voxceleb1sid</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.corpus.voxceleb1sv.html#module-s3prl.dataio.corpus.voxceleb1sv">s3prl.dataio.corpus.voxceleb1sv</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.dataset.html#module-s3prl.dataio.dataset">s3prl.dataio.dataset</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.dataset.base.html#module-s3prl.dataio.dataset.base">s3prl.dataio.dataset.base</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.dataset.diarization.html#module-s3prl.dataio.dataset.diarization">s3prl.dataio.dataset.diarization</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.dataset.encode.html#module-s3prl.dataio.dataset.encode">s3prl.dataio.dataset.encode</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.dataset.frame_label.html#module-s3prl.dataio.dataset.frame_label">s3prl.dataio.dataset.frame_label</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.dataset.load_audio.html#module-s3prl.dataio.dataset.load_audio">s3prl.dataio.dataset.load_audio</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.dataset.util.html#module-s3prl.dataio.dataset.util">s3prl.dataio.dataset.util</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#module-s3prl.dataio.encoder">s3prl.dataio.encoder</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.category.html#module-s3prl.dataio.encoder.category">s3prl.dataio.encoder.category</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.g2p.html#module-s3prl.dataio.encoder.g2p">s3prl.dataio.encoder.g2p</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#module-s3prl.dataio.encoder.tokenizer">s3prl.dataio.encoder.tokenizer</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.vocabulary.html#module-s3prl.dataio.encoder.vocabulary">s3prl.dataio.encoder.vocabulary</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.sampler.html#module-s3prl.dataio.sampler">s3prl.dataio.sampler</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.sampler.balanced_weighted_sampler.html#module-s3prl.dataio.sampler.balanced_weighted_sampler">s3prl.dataio.sampler.balanced_weighted_sampler</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.sampler.distributed_sampler.html#module-s3prl.dataio.sampler.distributed_sampler">s3prl.dataio.sampler.distributed_sampler</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.sampler.fixed_batch_size_batch_sampler.html#module-s3prl.dataio.sampler.fixed_batch_size_batch_sampler">s3prl.dataio.sampler.fixed_batch_size_batch_sampler</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.sampler.group_same_item_sampler.html#module-s3prl.dataio.sampler.group_same_item_sampler">s3prl.dataio.sampler.group_same_item_sampler</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.sampler.max_timestamp_batch_sampler.html#module-s3prl.dataio.sampler.max_timestamp_batch_sampler">s3prl.dataio.sampler.max_timestamp_batch_sampler</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.sampler.sorted_sampler.html#module-s3prl.dataio.sampler.sorted_sampler">s3prl.dataio.sampler.sorted_sampler</a>
+</li>
+          <li><a href="_autosummary/s3prl.metric.html#module-s3prl.metric">s3prl.metric</a>
+</li>
+          <li><a href="_autosummary/s3prl.metric.common.html#module-s3prl.metric.common">s3prl.metric.common</a>
+</li>
+          <li><a href="_autosummary/s3prl.metric.diarization.html#module-s3prl.metric.diarization">s3prl.metric.diarization</a>
+</li>
+          <li><a href="_autosummary/s3prl.metric.slot_filling.html#module-s3prl.metric.slot_filling">s3prl.metric.slot_filling</a>
+</li>
+          <li><a href="_autosummary/s3prl.util.html#module-s3prl.util">s3prl.util</a>
+</li>
+          <li><a href="_autosummary/s3prl.util.audio_info.html#module-s3prl.util.audio_info">s3prl.util.audio_info</a>
+</li>
+          <li><a href="_autosummary/s3prl.util.benchmark.html#module-s3prl.util.benchmark">s3prl.util.benchmark</a>
+</li>
+          <li><a href="_autosummary/s3prl.util.download.html#module-s3prl.util.download">s3prl.util.download</a>
+</li>
+          <li><a href="_autosummary/s3prl.util.override.html#module-s3prl.util.override">s3prl.util.override</a>
+</li>
+          <li><a href="_autosummary/s3prl.util.pseudo_data.html#module-s3prl.util.pseudo_data">s3prl.util.pseudo_data</a>
+</li>
+          <li><a href="_autosummary/s3prl.util.seed.html#module-s3prl.util.seed">s3prl.util.seed</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="P" class="genindex-section">
+  <h2>P</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.BertTokenizer.pad_idx">pad_idx (s3prl.dataio.encoder.BertTokenizer property)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.CharacterSlotTokenizer.pad_idx">(s3prl.dataio.encoder.CharacterSlotTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.CharacterTokenizer.pad_idx">(s3prl.dataio.encoder.CharacterTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.SubwordSlotTokenizer.pad_idx">(s3prl.dataio.encoder.SubwordSlotTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.SubwordTokenizer.pad_idx">(s3prl.dataio.encoder.SubwordTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.Tokenizer.pad_idx">(s3prl.dataio.encoder.Tokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.CharacterSlotTokenizer.pad_idx">(s3prl.dataio.encoder.tokenizer.CharacterSlotTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.CharacterTokenizer.pad_idx">(s3prl.dataio.encoder.tokenizer.CharacterTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.PhonemeTokenizer.pad_idx">(s3prl.dataio.encoder.tokenizer.PhonemeTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.SubwordSlotTokenizer.pad_idx">(s3prl.dataio.encoder.tokenizer.SubwordSlotTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.SubwordTokenizer.pad_idx">(s3prl.dataio.encoder.tokenizer.SubwordTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.WordTokenizer.pad_idx">(s3prl.dataio.encoder.tokenizer.WordTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.WordTokenizer.pad_idx">(s3prl.dataio.encoder.WordTokenizer property)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.util.override.html#s3prl.util.override.parse_overrides">parse_overrides() (in module s3prl.util.override)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="_autosummary/s3prl.dataio.corpus.speech_commands.html#s3prl.dataio.corpus.speech_commands.SpeechCommandsV1.parse_test_data_list">parse_test_data_list() (s3prl.dataio.corpus.speech_commands.SpeechCommandsV1 static method)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.SpeechCommandsV1.parse_test_data_list">(s3prl.dataio.corpus.SpeechCommandsV1 static method)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.corpus.speech_commands.html#s3prl.dataio.corpus.speech_commands.SpeechCommandsV1.parse_train_valid_data_list">parse_train_valid_data_list() (s3prl.dataio.corpus.speech_commands.SpeechCommandsV1 static method)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.SpeechCommandsV1.parse_train_valid_data_list">(s3prl.dataio.corpus.SpeechCommandsV1 static method)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.VoxCeleb1SV.path2data">path2data() (s3prl.dataio.corpus.VoxCeleb1SV class method)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.voxceleb1sv.html#s3prl.dataio.corpus.voxceleb1sv.VoxCeleb1SV.path2data">(s3prl.dataio.corpus.voxceleb1sv.VoxCeleb1SV class method)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.VoxCeleb1SV.path2uid">path2uid() (s3prl.dataio.corpus.VoxCeleb1SV class method)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.voxceleb1sv.html#s3prl.dataio.corpus.voxceleb1sv.VoxCeleb1SV.path2uid">(s3prl.dataio.corpus.voxceleb1sv.VoxCeleb1SV class method)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.corpus.speech_commands.html#s3prl.dataio.corpus.speech_commands.SpeechCommandsV1.path_to_unique_name">path_to_unique_name() (s3prl.dataio.corpus.speech_commands.SpeechCommandsV1 static method)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.SpeechCommandsV1.path_to_unique_name">(s3prl.dataio.corpus.SpeechCommandsV1 static method)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.metric.html#s3prl.metric.per">per() (in module s3prl.metric)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.metric.common.html#s3prl.metric.common.per">(in module s3prl.metric.common)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.PhonemeTokenizer">PhonemeTokenizer (class in s3prl.dataio.encoder.tokenizer)</a>
+</li>
+        <li><a href="_autosummary/s3prl.util.pseudo_data.html#s3prl.util.pseudo_data.pseudo_audio">pseudo_audio (class in s3prl.util.pseudo_data)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="Q" class="genindex-section">
+  <h2>Q</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.Quesst14">Quesst14 (class in s3prl.dataio.corpus)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.quesst14.html#s3prl.dataio.corpus.quesst14.Quesst14">(class in s3prl.dataio.corpus.quesst14)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="S" class="genindex-section">
+  <h2>S</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li>
+    s3prl.dataio
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.html#module-s3prl.dataio">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.dataio.collate_fn
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.collate_fn.html#module-s3prl.dataio.collate_fn">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.dataio.corpus
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#module-s3prl.dataio.corpus">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.dataio.corpus.base
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.base.html#module-s3prl.dataio.corpus.base">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.dataio.corpus.fluent_speech_commands
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.fluent_speech_commands.html#module-s3prl.dataio.corpus.fluent_speech_commands">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.dataio.corpus.iemocap
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.iemocap.html#module-s3prl.dataio.corpus.iemocap">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.dataio.corpus.librilight
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.librilight.html#module-s3prl.dataio.corpus.librilight">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.dataio.corpus.librispeech
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.librispeech.html#module-s3prl.dataio.corpus.librispeech">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.dataio.corpus.quesst14
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.quesst14.html#module-s3prl.dataio.corpus.quesst14">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.dataio.corpus.snips
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.snips.html#module-s3prl.dataio.corpus.snips">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.dataio.corpus.speech_commands
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.speech_commands.html#module-s3prl.dataio.corpus.speech_commands">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.dataio.corpus.voxceleb1sid
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.voxceleb1sid.html#module-s3prl.dataio.corpus.voxceleb1sid">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.dataio.corpus.voxceleb1sv
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.voxceleb1sv.html#module-s3prl.dataio.corpus.voxceleb1sv">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.dataio.dataset
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.dataset.html#module-s3prl.dataio.dataset">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.dataio.dataset.base
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.dataset.base.html#module-s3prl.dataio.dataset.base">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.dataio.dataset.diarization
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.dataset.diarization.html#module-s3prl.dataio.dataset.diarization">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.dataio.dataset.encode
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.dataset.encode.html#module-s3prl.dataio.dataset.encode">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.dataio.dataset.frame_label
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.dataset.frame_label.html#module-s3prl.dataio.dataset.frame_label">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.dataio.dataset.load_audio
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.dataset.load_audio.html#module-s3prl.dataio.dataset.load_audio">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.dataio.dataset.util
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.dataset.util.html#module-s3prl.dataio.dataset.util">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.dataio.encoder
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#module-s3prl.dataio.encoder">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.dataio.encoder.category
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.encoder.category.html#module-s3prl.dataio.encoder.category">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.dataio.encoder.g2p
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.encoder.g2p.html#module-s3prl.dataio.encoder.g2p">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.dataio.encoder.tokenizer
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#module-s3prl.dataio.encoder.tokenizer">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.dataio.encoder.vocabulary
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.encoder.vocabulary.html#module-s3prl.dataio.encoder.vocabulary">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.dataio.sampler
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.sampler.html#module-s3prl.dataio.sampler">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.dataio.sampler.balanced_weighted_sampler
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.sampler.balanced_weighted_sampler.html#module-s3prl.dataio.sampler.balanced_weighted_sampler">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.dataio.sampler.distributed_sampler
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.sampler.distributed_sampler.html#module-s3prl.dataio.sampler.distributed_sampler">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.dataio.sampler.fixed_batch_size_batch_sampler
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.sampler.fixed_batch_size_batch_sampler.html#module-s3prl.dataio.sampler.fixed_batch_size_batch_sampler">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.dataio.sampler.group_same_item_sampler
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.sampler.group_same_item_sampler.html#module-s3prl.dataio.sampler.group_same_item_sampler">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.dataio.sampler.max_timestamp_batch_sampler
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.sampler.max_timestamp_batch_sampler.html#module-s3prl.dataio.sampler.max_timestamp_batch_sampler">module</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li>
+    s3prl.dataio.sampler.sorted_sampler
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.sampler.sorted_sampler.html#module-s3prl.dataio.sampler.sorted_sampler">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.metric
+
+        <ul>
+          <li><a href="_autosummary/s3prl.metric.html#module-s3prl.metric">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.metric.common
+
+        <ul>
+          <li><a href="_autosummary/s3prl.metric.common.html#module-s3prl.metric.common">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.metric.diarization
+
+        <ul>
+          <li><a href="_autosummary/s3prl.metric.diarization.html#module-s3prl.metric.diarization">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.metric.slot_filling
+
+        <ul>
+          <li><a href="_autosummary/s3prl.metric.slot_filling.html#module-s3prl.metric.slot_filling">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.util
+
+        <ul>
+          <li><a href="_autosummary/s3prl.util.html#module-s3prl.util">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.util.audio_info
+
+        <ul>
+          <li><a href="_autosummary/s3prl.util.audio_info.html#module-s3prl.util.audio_info">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.util.benchmark
+
+        <ul>
+          <li><a href="_autosummary/s3prl.util.benchmark.html#module-s3prl.util.benchmark">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.util.download
+
+        <ul>
+          <li><a href="_autosummary/s3prl.util.download.html#module-s3prl.util.download">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.util.override
+
+        <ul>
+          <li><a href="_autosummary/s3prl.util.override.html#module-s3prl.util.override">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.util.pseudo_data
+
+        <ul>
+          <li><a href="_autosummary/s3prl.util.pseudo_data.html#module-s3prl.util.pseudo_data">module</a>
+</li>
+        </ul></li>
+        <li>
+    s3prl.util.seed
+
+        <ul>
+          <li><a href="_autosummary/s3prl.util.seed.html#module-s3prl.util.seed">module</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.dataset.frame_label.html#s3prl.dataio.dataset.frame_label.scale_labels_secs">scale_labels_secs() (in module s3prl.dataio.dataset.frame_label)</a>
+</li>
+        <li><a href="_autosummary/s3prl.util.audio_info.html#s3prl.util.audio_info.set_cache_dir">set_cache_dir() (in module s3prl.util.audio_info)</a>
+</li>
+        <li><a href="_autosummary/s3prl.util.download.html#s3prl.util.download.set_dir">set_dir() (in module s3prl.util.download)</a>
+</li>
+        <li><a href="_autosummary/s3prl.dataio.sampler.balanced_weighted_sampler.html#s3prl.dataio.sampler.balanced_weighted_sampler.BalancedWeightedSampler.set_epoch">set_epoch() (s3prl.dataio.sampler.balanced_weighted_sampler.BalancedWeightedSampler method)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.sampler.html#s3prl.dataio.sampler.BalancedWeightedSampler.set_epoch">(s3prl.dataio.sampler.BalancedWeightedSampler method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.sampler.distributed_sampler.html#s3prl.dataio.sampler.distributed_sampler.DistributedBatchSamplerWrapper.set_epoch">(s3prl.dataio.sampler.distributed_sampler.DistributedBatchSamplerWrapper method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.sampler.html#s3prl.dataio.sampler.DistributedBatchSamplerWrapper.set_epoch">(s3prl.dataio.sampler.DistributedBatchSamplerWrapper method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.sampler.fixed_batch_size_batch_sampler.html#s3prl.dataio.sampler.fixed_batch_size_batch_sampler.FixedBatchSizeBatchSampler.set_epoch">(s3prl.dataio.sampler.fixed_batch_size_batch_sampler.FixedBatchSizeBatchSampler method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.sampler.html#s3prl.dataio.sampler.FixedBatchSizeBatchSampler.set_epoch">(s3prl.dataio.sampler.FixedBatchSizeBatchSampler method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.sampler.group_same_item_sampler.html#s3prl.dataio.sampler.group_same_item_sampler.GroupSameItemSampler.set_epoch">(s3prl.dataio.sampler.group_same_item_sampler.GroupSameItemSampler method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.sampler.html#s3prl.dataio.sampler.GroupSameItemSampler.set_epoch">(s3prl.dataio.sampler.GroupSameItemSampler method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.sampler.max_timestamp_batch_sampler.html#s3prl.dataio.sampler.max_timestamp_batch_sampler.MaxTimestampBatchSampler.set_epoch">(s3prl.dataio.sampler.max_timestamp_batch_sampler.MaxTimestampBatchSampler method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.sampler.html#s3prl.dataio.sampler.MaxTimestampBatchSampler.set_epoch">(s3prl.dataio.sampler.MaxTimestampBatchSampler method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.sampler.sorted_sampler.html#s3prl.dataio.sampler.sorted_sampler.SortedBucketingSampler.set_epoch">(s3prl.dataio.sampler.sorted_sampler.SortedBucketingSampler method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.sampler.sorted_sampler.html#s3prl.dataio.sampler.sorted_sampler.SortedSliceSampler.set_epoch">(s3prl.dataio.sampler.sorted_sampler.SortedSliceSampler method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.sampler.html#s3prl.dataio.sampler.SortedBucketingSampler.set_epoch">(s3prl.dataio.sampler.SortedBucketingSampler method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.sampler.html#s3prl.dataio.sampler.SortedSliceSampler.set_epoch">(s3prl.dataio.sampler.SortedSliceSampler method)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.metric.html#s3prl.metric.slot_edit_f1">slot_edit_f1() (in module s3prl.metric)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.metric.slot_filling.html#s3prl.metric.slot_filling.slot_edit_f1">(in module s3prl.metric.slot_filling)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.metric.html#s3prl.metric.slot_type_f1">slot_type_f1() (in module s3prl.metric)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.metric.slot_filling.html#s3prl.metric.slot_filling.slot_type_f1">(in module s3prl.metric.slot_filling)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.metric.html#s3prl.metric.slot_value_cer">slot_value_cer() (in module s3prl.metric)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.metric.slot_filling.html#s3prl.metric.slot_filling.slot_value_cer">(in module s3prl.metric.slot_filling)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.metric.html#s3prl.metric.slot_value_wer">slot_value_wer() (in module s3prl.metric)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.metric.slot_filling.html#s3prl.metric.slot_filling.slot_value_wer">(in module s3prl.metric.slot_filling)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.SNIPS">SNIPS (class in s3prl.dataio.corpus)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.snips.html#s3prl.dataio.corpus.snips.SNIPS">(class in s3prl.dataio.corpus.snips)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.sampler.html#s3prl.dataio.sampler.SortedBucketingSampler">SortedBucketingSampler (class in s3prl.dataio.sampler)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.sampler.sorted_sampler.html#s3prl.dataio.sampler.sorted_sampler.SortedBucketingSampler">(class in s3prl.dataio.sampler.sorted_sampler)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.sampler.html#s3prl.dataio.sampler.SortedSliceSampler">SortedSliceSampler (class in s3prl.dataio.sampler)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.sampler.sorted_sampler.html#s3prl.dataio.sampler.sorted_sampler.SortedSliceSampler">(class in s3prl.dataio.sampler.sorted_sampler)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.SpeechCommandsV1">SpeechCommandsV1 (class in s3prl.dataio.corpus)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.speech_commands.html#s3prl.dataio.corpus.speech_commands.SpeechCommandsV1">(class in s3prl.dataio.corpus.speech_commands)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.corpus.speech_commands.html#s3prl.dataio.corpus.speech_commands.SpeechCommandsV1.split_dataset">split_dataset() (s3prl.dataio.corpus.speech_commands.SpeechCommandsV1 static method)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.SpeechCommandsV1.split_dataset">(s3prl.dataio.corpus.SpeechCommandsV1 static method)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.SubwordSlotTokenizer">SubwordSlotTokenizer (class in s3prl.dataio.encoder)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.SubwordSlotTokenizer">(class in s3prl.dataio.encoder.tokenizer)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.SubwordTokenizer">SubwordTokenizer (class in s3prl.dataio.encoder)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.SubwordTokenizer">(class in s3prl.dataio.encoder.tokenizer)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="T" class="genindex-section">
+  <h2>T</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="_autosummary/s3prl.metric.html#s3prl.metric.ter">ter() (in module s3prl.metric)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.metric.common.html#s3prl.metric.common.ter">(in module s3prl.metric.common)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.Quesst14.test_queries">test_queries (s3prl.dataio.corpus.Quesst14 property)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.quesst14.html#s3prl.dataio.corpus.quesst14.Quesst14.test_queries">(s3prl.dataio.corpus.quesst14.Quesst14 property)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.BertTokenizer.token_type">token_type (s3prl.dataio.encoder.BertTokenizer property)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.CharacterSlotTokenizer.token_type">(s3prl.dataio.encoder.CharacterSlotTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.CharacterTokenizer.token_type">(s3prl.dataio.encoder.CharacterTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.SubwordSlotTokenizer.token_type">(s3prl.dataio.encoder.SubwordSlotTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.SubwordTokenizer.token_type">(s3prl.dataio.encoder.SubwordTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.Tokenizer.token_type">(s3prl.dataio.encoder.Tokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.CharacterSlotTokenizer.token_type">(s3prl.dataio.encoder.tokenizer.CharacterSlotTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.CharacterTokenizer.token_type">(s3prl.dataio.encoder.tokenizer.CharacterTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.PhonemeTokenizer.token_type">(s3prl.dataio.encoder.tokenizer.PhonemeTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.SubwordSlotTokenizer.token_type">(s3prl.dataio.encoder.tokenizer.SubwordSlotTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.SubwordTokenizer.token_type">(s3prl.dataio.encoder.tokenizer.SubwordTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.WordTokenizer.token_type">(s3prl.dataio.encoder.tokenizer.WordTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.WordTokenizer.token_type">(s3prl.dataio.encoder.WordTokenizer property)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.Tokenizer">Tokenizer (class in s3prl.dataio.encoder)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="U" class="genindex-section">
+  <h2>U</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.BertTokenizer.unk_idx">unk_idx (s3prl.dataio.encoder.BertTokenizer property)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.CharacterSlotTokenizer.unk_idx">(s3prl.dataio.encoder.CharacterSlotTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.CharacterTokenizer.unk_idx">(s3prl.dataio.encoder.CharacterTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.SubwordSlotTokenizer.unk_idx">(s3prl.dataio.encoder.SubwordSlotTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.SubwordTokenizer.unk_idx">(s3prl.dataio.encoder.SubwordTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.Tokenizer.unk_idx">(s3prl.dataio.encoder.Tokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.CharacterSlotTokenizer.unk_idx">(s3prl.dataio.encoder.tokenizer.CharacterSlotTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.CharacterTokenizer.unk_idx">(s3prl.dataio.encoder.tokenizer.CharacterTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.PhonemeTokenizer.unk_idx">(s3prl.dataio.encoder.tokenizer.PhonemeTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.SubwordSlotTokenizer.unk_idx">(s3prl.dataio.encoder.tokenizer.SubwordSlotTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.SubwordTokenizer.unk_idx">(s3prl.dataio.encoder.tokenizer.SubwordTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.WordTokenizer.unk_idx">(s3prl.dataio.encoder.tokenizer.WordTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.WordTokenizer.unk_idx">(s3prl.dataio.encoder.WordTokenizer property)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="_autosummary/s3prl.util.download.html#s3prl.util.download.urls_to_filepaths">urls_to_filepaths() (in module s3prl.util.download)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="V" class="genindex-section">
+  <h2>V</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.Quesst14.valid_queries">valid_queries (s3prl.dataio.corpus.Quesst14 property)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.quesst14.html#s3prl.dataio.corpus.quesst14.Quesst14.valid_queries">(s3prl.dataio.corpus.quesst14.Quesst14 property)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.BertTokenizer.vocab_size">vocab_size (s3prl.dataio.encoder.BertTokenizer property)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.CharacterSlotTokenizer.vocab_size">(s3prl.dataio.encoder.CharacterSlotTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.CharacterTokenizer.vocab_size">(s3prl.dataio.encoder.CharacterTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.SubwordSlotTokenizer.vocab_size">(s3prl.dataio.encoder.SubwordSlotTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.SubwordTokenizer.vocab_size">(s3prl.dataio.encoder.SubwordTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.Tokenizer.vocab_size">(s3prl.dataio.encoder.Tokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.CharacterSlotTokenizer.vocab_size">(s3prl.dataio.encoder.tokenizer.CharacterSlotTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.CharacterTokenizer.vocab_size">(s3prl.dataio.encoder.tokenizer.CharacterTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.PhonemeTokenizer.vocab_size">(s3prl.dataio.encoder.tokenizer.PhonemeTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.SubwordSlotTokenizer.vocab_size">(s3prl.dataio.encoder.tokenizer.SubwordSlotTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.SubwordTokenizer.vocab_size">(s3prl.dataio.encoder.tokenizer.SubwordTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.WordTokenizer.vocab_size">(s3prl.dataio.encoder.tokenizer.WordTokenizer property)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.WordTokenizer.vocab_size">(s3prl.dataio.encoder.WordTokenizer property)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.CharacterSlotTokenizer.vocab_to_idx">vocab_to_idx() (s3prl.dataio.encoder.CharacterSlotTokenizer method)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.CharacterTokenizer.vocab_to_idx">(s3prl.dataio.encoder.CharacterTokenizer method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.CharacterSlotTokenizer.vocab_to_idx">(s3prl.dataio.encoder.tokenizer.CharacterSlotTokenizer method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.CharacterTokenizer.vocab_to_idx">(s3prl.dataio.encoder.tokenizer.CharacterTokenizer method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.PhonemeTokenizer.vocab_to_idx">(s3prl.dataio.encoder.tokenizer.PhonemeTokenizer method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.WordTokenizer.vocab_to_idx">(s3prl.dataio.encoder.tokenizer.WordTokenizer method)</a>
+</li>
+          <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.WordTokenizer.vocab_to_idx">(s3prl.dataio.encoder.WordTokenizer method)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.VoxCeleb1SID">VoxCeleb1SID (class in s3prl.dataio.corpus)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.voxceleb1sid.html#s3prl.dataio.corpus.voxceleb1sid.VoxCeleb1SID">(class in s3prl.dataio.corpus.voxceleb1sid)</a>
+</li>
+        </ul></li>
+        <li><a href="_autosummary/s3prl.dataio.corpus.html#s3prl.dataio.corpus.VoxCeleb1SV">VoxCeleb1SV (class in s3prl.dataio.corpus)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.corpus.voxceleb1sv.html#s3prl.dataio.corpus.voxceleb1sv.VoxCeleb1SV">(class in s3prl.dataio.corpus.voxceleb1sv)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="W" class="genindex-section">
+  <h2>W</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="_autosummary/s3prl.metric.html#s3prl.metric.wer">wer() (in module s3prl.metric)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.metric.common.html#s3prl.metric.common.wer">(in module s3prl.metric.common)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="_autosummary/s3prl.dataio.encoder.html#s3prl.dataio.encoder.WordTokenizer">WordTokenizer (class in s3prl.dataio.encoder)</a>
+
+        <ul>
+          <li><a href="_autosummary/s3prl.dataio.encoder.tokenizer.html#s3prl.dataio.encoder.tokenizer.WordTokenizer">(class in s3prl.dataio.encoder.tokenizer)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2022, S3PRL Team
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    <script src="_static/js/custom.js"></script>
+    </body>
+</html>
