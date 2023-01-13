@@ -10,6 +10,7 @@ from s3prl.upstream.data2vec.hubconf import *
 from s3prl.upstream.decoar2.hubconf import *
 from s3prl.upstream.decoar.hubconf import *
 from s3prl.upstream.decoar_layers.hubconf import *
+from s3prl.upstream.disentangled.hubconf import *
 from s3prl.upstream.distiller.hubconf import *
 from s3prl.upstream.example.hubconf import *
 from s3prl.upstream.fastvgs.hubconf import *
@@ -25,6 +26,7 @@ from s3prl.upstream.npc.hubconf import *
 from s3prl.upstream.pase.hubconf import *
 from s3prl.upstream.passt.hubconf import *
 from s3prl.upstream.roberta.hubconf import *
+from s3prl.upstream.speech_dino.hubconf import *
 from s3prl.upstream.ssast.hubconf import *
 from s3prl.upstream.tera.hubconf import *
 from s3prl.upstream.unispeech_sat.hubconf import *

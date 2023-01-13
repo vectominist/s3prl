@@ -18,7 +18,7 @@ import sys
 from copy import deepcopy
 from dataclasses import dataclass
 from datetime import datetime
-from pathlib import Path
+from pathlib import Path, PosixPath
 from time import time
 from typing import Dict, List, Union
 
@@ -62,6 +62,9 @@ The methods affected by the following config are: {:s}
 """
 
 __all__ = ["Problem"]
+
+# omegaconf.OmegaConf.register_new_resolver("path", Path, replace=True)
+# omegaconf.OmegaConf.register_new_resolver("posixpath", PosixPath, replace=True)
 
 
 class _DistributedDataParallel(torch.nn.parallel.DistributedDataParallel):
@@ -932,7 +935,7 @@ class Problem:
                 omegaconf.OmegaConf.create(config), throw_on_missing=True
             )
 
-        assert_no_missing(config)
+        # assert_no_missing(config)
         return config
 
     @staticmethod
@@ -987,8 +990,9 @@ class Problem:
         schema = omegaconf.OmegaConf.create(self.default_config())
         config = omegaconf.OmegaConf.merge(schema, yaml_conf, override_conf)
         config = omegaconf.OmegaConf.to_container(
-            config, resolve=True, throw_on_missing=True
+            config, resolve=True # , throw_on_missing=True
         )
+        # FIXME: Note use omegaconf==2.0.6 to resolve conflicts between fairseq & s3prl
         logger.info(config)
 
         self.run(**config)
