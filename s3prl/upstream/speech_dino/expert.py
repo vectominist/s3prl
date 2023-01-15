@@ -1,12 +1,3 @@
-# Copyright (c) Facebook, Inc. All Rights Reserved
-
-# -*- coding: utf-8 -*- #
-"""*********************************************************************************************"""
-#   FileName     [ upstream/hubert/expert.py ]
-#   Synopsis     [ the HuBERT wrapper ]
-#   Author       [ Kushal Lakhotia ]
-"""*********************************************************************************************"""
-
 from argparse import Namespace
 import logging
 from pathlib import Path
