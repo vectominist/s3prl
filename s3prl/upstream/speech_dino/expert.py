@@ -36,21 +36,30 @@ class UpstreamExpert(UpstreamBase):
         self.model = model[0]
         self.task = task
 
-        self.feat_select = feat_select
-        self.get_teacher = get_teacher or (feat_select == "teacher_feats")
-        self.get_vq = get_vq or (feat_select in {"vq_onehot", "vq_labels"})
-        self.get_pred = get_pred or (feat_select in {"student_logit", "student_prob"})
+        if len(feat_select.split("-")) == 2:
+            self.feat_select, self.feat_layer = feat_select.split("-")
+            self.feat_layer = int(self.feat_layer)
+        else:
+            self.feat_select = feat_select
+            self.feat_layer = -1
+        self.get_teacher = get_teacher or (self.feat_select == "teacher_feats")
+        self.get_vq = get_vq or (self.feat_select in {"vq_onehot", "vq_labels"})
+        self.get_pred = get_pred or (
+            self.feat_select in {"student_logit", "student_prob"}
+        )
 
-        assert feat_select in {
+        assert self.feat_select in {
             "student_feats",
             "teacher_feats",
             "vq_onehot",
             "vq_labels",
             "student_logit",
             "student_prob",
-        }, feat_select
+        }, self.feat_select
 
-        logger.info(f"Feature selection: {feat_select}")
+        logger.info(
+            f"Feature selection: {self.feat_select} (layer = {self.feat_layer})"
+        )
         logger.info(
             f"Returns teacher = {self.get_teacher} , VQ = {self.get_vq} , pred = {self.get_pred}"
         )
@@ -98,5 +107,8 @@ class UpstreamExpert(UpstreamBase):
 
         outputs["hidden_states"] = results[self.feat_select]
         outputs["last_hidden_state"] = outputs["hidden_states"][-1]
+
+        if self.feat_layer >= 0:
+            outputs["hidden_states"] = [outputs["hidden_states"][self.feat_layer]]
 
         return outputs
