@@ -7,6 +7,7 @@ import torch
 from argparse import Namespace
 import os.path as op
 import csv
+import librosa
 
 
 # the following codes are modify from fairseq's implementation
@@ -181,9 +182,15 @@ class S3prl_SpeechToTextDataset(SpeechToTextDataset):
         self, index: int
     ) -> Tuple[str, int, torch.Tensor, Optional[torch.Tensor]]:
 
-        source, sr = torchaudio.load(self.audio_paths[index])
+        # source, sr = torchaudio.load(self.audio_paths[index])
+        source, sr = librosa.load(self.audio_paths[index], sr=None)
+        source = torch.from_numpy(source)
+
+        if source.dim() == 1:
+            source = source.unsqueeze(0)
 
         assert self.srs[index] == sr
+        assert source.dim() == 2, source.shape
         source = self.resamplers[sr](source)
         source = torch.mean(source, dim=0)
         source = source.view(-1)

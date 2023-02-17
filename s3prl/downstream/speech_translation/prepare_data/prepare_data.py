@@ -48,7 +48,11 @@ if __name__ == '__main__':
         if not os.path.isfile(file_path):
             verbose(args, f"{file_path} not exists, skip")
             continue
-        wav, sr = torchaudio.load(file_path)
+        try:
+            wav, sr = torchaudio.load(file_path)
+        except:
+            verbose(args, f"{file_path} cannot be loaded, skip")
+            continue
         item = {
             'id': line[args.path_key].split('.')[0],
             'audio': line[args.path_key],

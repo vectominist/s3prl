@@ -35,6 +35,14 @@ def randomize_upstream(upstream: nn.Module):
     upstream.apply(init_weights)
 
 
+def randomize_upstream_mean_variance(upstream: nn.Module):
+    def init_weights(m: nn.Module):
+        for p in m.parameters():
+            torch.nn.init.normal_(p, mean=p.mean().item(), std=p.std().item())
+
+    upstream.apply(init_weights)
+
+
 class S3PRLUpstream(nn.Module):
     """
     This is an easy interface for using all the models in S3PRL.
@@ -108,6 +116,7 @@ class S3PRLUpstream(nn.Module):
         normalize: bool = False,
         extra_conf: dict = None,
         randomize: bool = False,
+        randomize_with_mv: bool = False,
     ):
         super().__init__()
         upstream_conf = {"refresh": refresh, **(extra_conf or {})}
@@ -118,6 +127,10 @@ class S3PRLUpstream(nn.Module):
 
         if randomize:
             randomize_upstream(self.upstream)
+            print("Randomized")
+        if randomize_with_mv:
+            randomize_upstream_mean_variance(self.upstream)
+            print("Randomized with mean and variance")
 
         self.normalize = normalize
 
@@ -288,6 +301,11 @@ class Featurizer(nn.Module):
         self.normalize = normalize
 
         if upstream.num_layers > 1:
+            if isinstance(layer_selections, int):
+                layer_selections = [layer_selections]
+            if isinstance(layer_selections, str):
+                layer_selections = eval(layer_selections)
+
             if layer_selections is not None:
                 assert upstream.num_layers >= len(layer_selections)
                 self.layer_selections = sorted(layer_selections)
@@ -345,6 +363,8 @@ class Featurizer(nn.Module):
 
         all_hs = [h for idx, h in enumerate(all_hs) if idx in self.layer_selections]
         all_lens = [l for idx, l in enumerate(all_lens) if idx in self.layer_selections]
+        if len(all_hs) == 1:
+            return all_hs[0], all_lens[0]
         hs, hs_len = self._weighted_sum(all_hs, all_lens)
         return hs, hs_len
 

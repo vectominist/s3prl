@@ -16,6 +16,10 @@ from s3prl.utility.helper import backup, get_time_tag, hack_isinstance, is_leade
 
 from huggingface_hub import HfApi, HfFolder
 
+import warnings
+
+warnings.filterwarnings("ignore")
+
 def get_downstream_args():
     parser = argparse.ArgumentParser()
 

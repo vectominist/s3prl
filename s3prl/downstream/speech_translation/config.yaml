@@ -55,11 +55,11 @@ downstream_expert:
     dev: dev
     test: test
     max_tokens: 10000
-    num_workers: 4
+    num_workers: 8
 
   # configuration of decoding
   generatorrc:
-    beam: 20
+    beam: 40
     max_len_a: 0
     max_len_b: 400
 

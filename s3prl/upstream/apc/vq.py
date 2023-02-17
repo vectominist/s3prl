@@ -45,7 +45,7 @@ class VQLayer(nn.Module):
         self.codebook_CxE = nn.Linear(codebook_size, code_dim, bias=False)
         self.token_usg = np.zeros(codebook_size)
 
-    def forward(self, inputs_BxLxI, testing, lens=None):
+    def forward(self, inputs_BxLxI, testing):
         logits_BxLxC = self.vq_logits(inputs_BxLxI)
         if testing:
             # During inference, just take the max index.

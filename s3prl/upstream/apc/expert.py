@@ -16,7 +16,7 @@ from .audio import create_transform
 
 
 class UpstreamExpert(UpstreamBase):
-    def __init__(self, ckpt, **kwargs):
+    def __init__(self, ckpt, get_vq=False, **kwargs):
         super().__init__(**kwargs)
 
         ckpt = torch.load(ckpt, map_location="cpu")
@@ -26,7 +26,9 @@ class UpstreamExpert(UpstreamBase):
         self.model = APC(feat_dim, **config["model"]["paras"])
         self.model.load_state_dict(ckpt["model"])
 
-        if len(self.hooks) == 0:
+        get_vq = get_vq and self.model.apply_vq
+
+        if len(self.hooks) == 0 and not get_vq:
             self.add_hook(
                 "self.model.rnn_layers[1]",
                 lambda input, output: pad_packed_sequence(input[0], batch_first=True)[
@@ -40,6 +42,13 @@ class UpstreamExpert(UpstreamBase):
                 ],
             )
             self.add_hook("self.model", lambda input, output: output[1])
+        
+        if len(self.hooks) == 0 and get_vq:
+            for i in range(len(self.model.vq_layers)):
+                self.add_hook(
+                    f"self.model.vq_layers[{i}]",
+                    lambda input, output: output[0],
+                )
 
     def get_downsample_rates(self, key: str) -> int:
         return 160

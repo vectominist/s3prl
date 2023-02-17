@@ -1,7 +1,7 @@
 #!/usr/local/bin bash
 
 # basic config
-covo_root="root directory of covost (ex. /Drive/cv-corpus-6.1-2020-12-11)"
+covo_root=~/scratch/dataset/cv_4_en
 src_lang=en
 tgt_lang=de
 
