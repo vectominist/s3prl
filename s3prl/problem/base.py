@@ -613,6 +613,7 @@ class Problem:
                     if is_new_best:
                         valid_best_metrics = deepcopy(valid_metrics)
                         save_names.append("valid_best")
+                        logger.info("Best!")
 
                 if global_step % conf.save_step == 0:
                     ckpt_dirs = [

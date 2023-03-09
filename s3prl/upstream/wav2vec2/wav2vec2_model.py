@@ -3042,9 +3042,11 @@ class TransformerEncoder(nn.Module):
         padding_mask=None,
         layer=None,
         ffn_adapters=None,
+        freeze_pos=False,
+        freeze_layers=None,
     ):
         x, layer_results = self.extract_features(
-            x, padding_mask, layer, ffn_adapters=ffn_adapters
+            x, padding_mask, layer, ffn_adapters=ffn_adapters, freeze_pos=freeze_pos, freeze_layers=freeze_layers
         )
 
         if self.layer_norm_first and layer is None:
@@ -3059,17 +3061,26 @@ class TransformerEncoder(nn.Module):
         tgt_layer=None,
         min_layer=0,
         ffn_adapters=None,
+        freeze_pos=False,
+        freeze_layers=None,
     ):
 
         if padding_mask is not None:
             x = index_put(x, padding_mask, 0)
 
-        x_conv = self.pos_conv(x.transpose(1, 2))
-        x_conv = x_conv.transpose(1, 2)
-        x = x + x_conv
-
-        if not self.layer_norm_first:
-            x = self.layer_norm(x)
+        if freeze_pos:
+            with torch.no_grad():
+                x_conv = self.pos_conv(x.transpose(1, 2))
+                x_conv = x_conv.transpose(1, 2)
+                x = x + x_conv
+                if not self.layer_norm_first:
+                    x = self.layer_norm(x)
+        else:
+            x_conv = self.pos_conv(x.transpose(1, 2))
+            x_conv = x_conv.transpose(1, 2)
+            x = x + x_conv
+            if not self.layer_norm_first:
+                x = self.layer_norm(x)
 
         # pad to the sequence length dimension
         x, pad_length = pad_to_multiple(
@@ -3096,12 +3107,21 @@ class TransformerEncoder(nn.Module):
                 if ffn_adapters is not None:
                     ffn_adapter = ffn_adapters[i]
 
-                x, (z, lr) = layer(
-                    x,
-                    self_attn_padding_mask=padding_mask,
-                    need_weights=False,
-                    ffn_adapter=ffn_adapter,
-                )
+                if isinstance(freeze_layers, list) and i + 1 in freeze_layers:
+                    with torch.no_grad():
+                        x, (z, lr) = layer(
+                            x,
+                            self_attn_padding_mask=padding_mask,
+                            need_weights=False,
+                            ffn_adapter=ffn_adapter,
+                        )
+                else:
+                    x, (z, lr) = layer(
+                        x,
+                        self_attn_padding_mask=padding_mask,
+                        need_weights=False,
+                        ffn_adapter=ffn_adapter,
+                    )
                 if i >= min_layer:
                     layer_results.append((x, z, lr))
             if i == tgt_layer:

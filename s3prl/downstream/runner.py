@@ -26,6 +26,9 @@ from s3prl.utility.helper import is_leader_process, get_model_state, show, defau
 
 from huggingface_hub import HfApi, HfFolder, Repository
 
+from .audio_aug import AudioAugmentation
+
+
 SAMPLE_RATE = 16000
 
 MODEL_CARD_MARKDOWN = """---
@@ -440,6 +443,12 @@ class Runner():
         evaluate_ratio = float(self.config["runner"].get("evaluate_ratio", 1))
         evaluate_steps = round(len(dataloader) * evaluate_ratio)
 
+        # augmentation
+        audio_aug_config = self.config.get("audio_aug", None)
+        augmenter = None
+        if audio_aug_config is not None:
+            augmenter = AudioAugmentation(**audio_aug_config)
+
         batch_ids = []
         records = defaultdict(list)
         for batch_id, (wavs, *others) in enumerate(tqdm(dataloader, dynamic_ncols=True, desc=split, total=evaluate_steps)):
@@ -447,6 +456,10 @@ class Runner():
                 break
 
             wavs = [torch.FloatTensor(wav).to(self.args.device) for wav in wavs]
+
+            if augmenter is not None:
+                wavs = [augmenter(wav.unsqueeze(0)).squeeze(0) for wav in wavs]
+
             with torch.no_grad():
                 features = self.upstream.model(wavs)
                 features = self.featurizer.model(wavs, features)
