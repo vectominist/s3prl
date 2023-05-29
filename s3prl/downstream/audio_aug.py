@@ -1,12 +1,14 @@
 import logging
 from pathlib import Path
 from typing import List, Tuple, Union
+import os
 
 import numpy as np
 import torch
 from torch_audiomentations import (
     AddBackgroundNoise,
     AddColoredNoise,
+    ApplyImpulseResponse,
     Compose,
     Mix,
     PitchShift,
@@ -27,6 +29,8 @@ class AudioAugmentation:
         background_noise_prob: float = 0.0,
         background_noise_path: Union[List[Path], List[str], Path, str] = None,
         background_noise_range: Tuple[float, float] = (5.0, 30.0),
+        ir_prob: float = 0.0,
+        ir_path: Union[List[Path], List[str], Path, str] = None,
         sample_rate: int = 16000,
     ) -> None:
 
@@ -50,6 +54,37 @@ class AudioAugmentation:
                             pitch_shift_range[0],
                             pitch_shift_range[1],
                             p=1.0,
+                        )
+                    ]
+                )
+            )
+        if ir_path is not None and ir_prob > 0.0:
+            print(f"Apply impulse response")
+            print(f"IR source: {ir_path}")
+            self.aug_probs.append(ir_prob)
+            ir_path_list = []
+            for path in ir_path:
+                if os.path.isdir(path):
+                    path = Path(path)
+                    if path.stem == "real_rirs_isotropic_noises":
+                        files_1 = path.rglob("*_rir_*.wav")
+                        files_2 = path.rglob("*_air_*.wav")
+                        files = list(files_1) + list(files_2)
+                    else:
+                        files = path.rglob("*.wav")
+                    files = [str(f) for f in files]
+                    ir_path_list += files
+                    logger.info(f"Found {len(files)} audio files in {str(path)}")
+                else:
+                    raise NotImplementedError
+            self.transforms.append(
+                Compose(
+                    [
+                        ApplyImpulseResponse(
+                            ir_path_list,
+                            p=1.0,
+                            sample_rate=sample_rate,
+                            compensate_for_propagation_delay=True,
                         )
                     ]
                 )
@@ -85,6 +120,8 @@ class AudioAugmentation:
                             background_noise_path,
                             background_noise_range[0],
                             background_noise_range[1],
+                            min_len_ratio=1.0,
+                            repeat_same=True,
                             p=1.0,
                             sample_rate=sample_rate,
                         )
@@ -106,4 +143,4 @@ class AudioAugmentation:
                 i = np.random.choice(self.num_augs, p=self.aug_probs)
                 wav = self.transforms[i](wav, sample_rate=self.sample_rate)
 
-        return wav.squeeze(1)
+        return wav.squeeze(1).clamp(-1.0, 1.0)

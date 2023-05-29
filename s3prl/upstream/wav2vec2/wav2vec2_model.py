@@ -589,6 +589,7 @@ class ConformerWav2Vec2EncoderLayer(ConformerEncoderLayer):
         need_weights: bool = False,
         att_args=None,
         position_emb=None,
+        ffn_adapter=None,
     ):
         return super().forward(x, self_attn_padding_mask, position_emb)
 
@@ -3044,9 +3045,16 @@ class TransformerEncoder(nn.Module):
         ffn_adapters=None,
         freeze_pos=False,
         freeze_layers=None,
+        disable_pos=False,
     ):
         x, layer_results = self.extract_features(
-            x, padding_mask, layer, ffn_adapters=ffn_adapters, freeze_pos=freeze_pos, freeze_layers=freeze_layers
+            x,
+            padding_mask,
+            layer,
+            ffn_adapters=ffn_adapters,
+            freeze_pos=freeze_pos,
+            freeze_layers=freeze_layers,
+            disable_pos=disable_pos,
         )
 
         if self.layer_norm_first and layer is None:
@@ -3063,6 +3071,7 @@ class TransformerEncoder(nn.Module):
         ffn_adapters=None,
         freeze_pos=False,
         freeze_layers=None,
+        disable_pos=False,
     ):
 
         if padding_mask is not None:
@@ -3070,15 +3079,17 @@ class TransformerEncoder(nn.Module):
 
         if freeze_pos:
             with torch.no_grad():
-                x_conv = self.pos_conv(x.transpose(1, 2))
-                x_conv = x_conv.transpose(1, 2)
-                x = x + x_conv
+                if not disable_pos:
+                    x_conv = self.pos_conv(x.transpose(1, 2))
+                    x_conv = x_conv.transpose(1, 2)
+                    x = x + x_conv
                 if not self.layer_norm_first:
                     x = self.layer_norm(x)
         else:
-            x_conv = self.pos_conv(x.transpose(1, 2))
-            x_conv = x_conv.transpose(1, 2)
-            x = x + x_conv
+            if not disable_pos:
+                x_conv = self.pos_conv(x.transpose(1, 2))
+                x_conv = x_conv.transpose(1, 2)
+                x = x + x_conv
             if not self.layer_norm_first:
                 x = self.layer_norm(x)
 

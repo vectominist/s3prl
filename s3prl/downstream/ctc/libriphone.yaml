@@ -34,12 +34,12 @@ optimizer:
 #   num_time_mask: 10
 
 # only for evaluation
-# audio_aug:
-#   noise_prob: 0.0
-#   noise_range: [10.0, 20.0]
-#   background_noise_prob: 0.0
-#   background_noise_path: /data/sls/r/u/hengjui/home/scratch/dataset/musan
-#   background_noise_range: [10.0, 20.0]
+audio_aug:
+  noise_prob: 0.0
+  noise_range: [10.0, 20.0]
+  background_noise_prob: 0.0
+  background_noise_path: /data/sls/r/u/hengjui/home/scratch/dataset/musan
+  background_noise_range: [10.0, 20.0]
 
 downstream_expert:
   corpus:                                 

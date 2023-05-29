@@ -47,9 +47,9 @@ downstream_expert:
     train_batch_size: 32
     batch_size: 32
     eval_batch_size: 1
-    libri_root: '/app/data/LibriSpeech'
-    bucket_file: './data/librispeech/len_for_bucket'
-    dict_path: "./downstream/asr/char.dict"
+    libri_root: /data/sls/temp/alexhliu/data/LibriSpeech
+    bucket_file: /data/sls/r/u/hengjui/home/scratch/dataset/libri_util/len_for_bucket
+    dict_path: ./downstream/asr/char.dict
 
     zero_infinity: True
 

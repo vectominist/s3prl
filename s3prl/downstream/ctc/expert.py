@@ -117,6 +117,8 @@ class DownstreamExpert(nn.Module):
                 hypothesis=records["hypothesis"],
                 groundtruth=records["groundtruth"],
             )
+            if metric == "per":
+                results[metric] *= 100
 
         save_names = []
         for key, value in results.items():

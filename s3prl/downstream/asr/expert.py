@@ -346,6 +346,21 @@ class DownstreamExpert(nn.Module):
         print(f'{split} uer: {uer}')
         print(f'{split} wer: {wer}')
 
+        try:
+            from whisper.normalizers import EnglishTextNormalizer
+            normalizer = EnglishTextNormalizer()
+            pred_words = [normalizer(" ".join(sent)).split(" ") for sent in records['pred_words']]
+            target_words = [normalizer(" ".join(sent)).split(" ") for sent in records['target_words']]
+            _, wer = self._compute_metrics(
+                records['pred_tokens'],
+                pred_words,
+                records['target_tokens'],
+                target_words,
+            )
+            print(f'{split} wer: {wer} (Whisper normalization)')
+        except:
+            pass
+
         save_names = []
         if split == 'dev-clean' and wer < self.best_score:
             self.best_score = torch.ones(1) * wer

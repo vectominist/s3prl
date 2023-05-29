@@ -18,7 +18,7 @@ class UpstreamExpert(UpstreamBase):
         self,
         ckpt,
         feat_select: str = "hidden",
-        feat_layer: int = -1,
+        # feat_layer: int = -1,
         **kwargs,
     ):
         super().__init__(**kwargs)
@@ -29,8 +29,9 @@ class UpstreamExpert(UpstreamBase):
         self.model = NBranchModel.load_from_checkpoint(ckpt, strict=False)
         if self.model.encoder_type == "HuBERT":
             self.model.encoder.model.feature_grad_mult = 0.0
+        self.model.audio_aug = None
         self.feat_select = feat_select
-        self.feat_layer = feat_layer
+        # self.feat_layer = feat_layer
 
         assert self.feat_select in {
             "all_feats",
@@ -61,7 +62,7 @@ class UpstreamExpert(UpstreamBase):
         padded_wav = pad_sequence(wavs, batch_first=True)
 
         results = self.model(
-            (padded_wav, wav_lengths, wav_padding_mask, None),
+            (padded_wav, wav_lengths, wav_padding_mask, None, None, None),
             feat_only=True,
             apply_aug=False,
         )
@@ -69,10 +70,13 @@ class UpstreamExpert(UpstreamBase):
         outputs = {}
 
         if self.model.loss_type in {"SwavVQDisentangle"}:
-            outputs["code"] = results["codes"][self.feat_layer]
-            outputs["logits"] = results["logits"][self.feat_layer]
-            outputs["probs"] = F.softmax(results["logits"][self.feat_layer], dim=-1)
-        feat = results["repr_list"][self.feat_layer]
+            # outputs["code"] = results["codes"][self.feat_layer]
+            # outputs["logits"] = results["logits"][self.feat_layer]
+            # outputs["probs"] = F.softmax(results["logits"][self.feat_layer], dim=-1)
+            outputs["code"] = results["codes"]
+            outputs["logits"] = results["logits"]
+            outputs["probs"] = F.softmax(results["logits"], dim=-1)
+        feat = results["repr_list"]
         feat_list = results["feat_list"]
 
         outputs["disentangled"] = feat

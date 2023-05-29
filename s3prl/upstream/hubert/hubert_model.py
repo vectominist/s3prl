@@ -389,7 +389,7 @@ class HubertModel(torch.nn.Module):
                 min_space=self.mask_min_space,
             )
             mask_indices = torch.from_numpy(mask_indices).to(x.device)
-            x[mask_indices] = self.mask_emb
+            x[mask_indices] = self.mask_emb.type_as(x)
         else:
             mask_indices = None
 
@@ -607,3 +607,5 @@ class HubertModel(torch.nn.Module):
     def remove_pretraining_modules(self):
         self.target_glu = None
         self.final_proj = None
+        self.mask_emb = None
+        self.label_embs_concat = None
