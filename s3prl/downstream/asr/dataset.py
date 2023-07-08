@@ -12,7 +12,8 @@
 ###############
 import logging
 import os
-import random
+import re
+
 
 # -------------#
 import pandas as pd
@@ -20,8 +21,6 @@ from tqdm import tqdm
 from pathlib import Path
 
 # -------------#
-import torch
-from torch.nn.utils.rnn import pad_sequence
 from torch.utils.data.dataset import Dataset
 
 # -------------#
@@ -39,14 +38,25 @@ HALF_BATCHSIZE_TIME = 2000
 ####################
 class SequenceDataset(Dataset):
     def __init__(
-        self, split, bucket_size, dictionary, libri_root, bucket_file, **kwargs
+        self,
+        split,
+        bucket_size,
+        dictionary,
+        libri_root,
+        bucket_file,
+        dataset_type: str = "librispeech",
+        transcription = None,
+        **kwargs,
     ):
         super(SequenceDataset, self).__init__()
 
         self.dictionary = dictionary
         self.libri_root = libri_root
+        self.dataset_type = dataset_type.lower()
         self.sample_rate = SAMPLE_RATE
         self.split_sets = kwargs[split]
+
+        assert self.dataset_type in {"librispeech", "chime3"}, self.dataset_type
 
         # Read table for bucketing
         assert os.path.isdir(
@@ -73,7 +83,10 @@ class SequenceDataset(Dataset):
         assert len(X) != 0, f"0 data found for {split}"
 
         # Transcripts
-        Y = self._load_transcript(X)
+        if self.dataset_type == "librispeech":
+            Y = self._load_transcript(X)
+        if self.dataset_type == "chime3":
+            Y = self._load_transcript_chime3(X, transcription)
 
         x_names = set([self._parse_x_name(x) for x in X])
         y_names = set(Y.keys())
@@ -146,6 +159,28 @@ class SequenceDataset(Dataset):
                 for line in trans_f:
                     lst = line.strip().split()
                     trsp_sequences[lst[0]] = process_trans(" ".join(lst[1:]))
+
+        return trsp_sequences
+
+    def _load_transcript_chime3(self, x_list, transcription):
+        """Load the transcripts for CHiME3"""
+
+        def process_trans(transcript):
+            # TODO: support character / bpe
+            transcript = transcript.upper()
+            transcript = transcript.replace(".", "")
+            transcript = re.sub(" +", " ", transcript)
+            return " ".join(list(transcript.replace(" ", "|"))) + " |"
+
+        trsp_sequences = {}
+        with open(transcription, "r") as fp:
+            # chime3_et05.trn_all
+            for line in fp:
+                line = line.strip()
+                if line == "":
+                    continue
+                lst = line.split(" ")
+                trsp_sequences[lst[0]] = process_trans(" ".join(lst[1:]))
 
         return trsp_sequences
 

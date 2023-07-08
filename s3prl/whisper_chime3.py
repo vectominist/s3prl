@@ -1,40 +1,59 @@
 import argparse
-from pathlib import Path
 
 import torch
-import torchaudio
 import whisper
 from tqdm import tqdm
 from whisper.normalizers import EnglishTextNormalizer
 
-from s3prl.downstream.audio_aug import AudioAugmentation
 from s3prl.metric import cer, wer
 from s3prl.util.seed import fix_random_seeds
+from s3prl.downstream.asr.dataset import SequenceDataset, Dictionary
 
 
-class LibriSpeech(torch.utils.data.Dataset):
+def token_to_word(text):
+    # Hard coding but it is only used here for now.
+    # Assumption that units are characters. Doesn't handle BPE.
+    # Inter-character separator is " " and inter-word separator is "|".
+    return text.replace(" ", "").replace("|", " ").strip()
+
+
+class CHiME3(torch.utils.data.Dataset):
     def __init__(
-        self, root, augmenter: AudioAugmentation, split="test-clean"
+        self,
+        root,
+        bucket_file,
+        transcription,
+        split="et05_bus_real",
+        dictionary="./downstream/asr/char.dict",
     ):
-        self.dataset = torchaudio.datasets.LIBRISPEECH(
-            root=root,
-            url=split,
-            download=False,
+        self.dictionary = Dictionary.load(dictionary)
+        kwargs = {split: [split]}
+        self.dataset = SequenceDataset(
+            split,
+            1,
+            self.dictionary,
+            root,
+            bucket_file,
+            dataset_type="chime3",
+            transcription=transcription,
+            **kwargs
         )
-        self.augmenter = augmenter
 
     def __len__(self):
         return len(self.dataset)
 
     def __getitem__(self, item):
-        audio, sample_rate, text, speaker, chapter, utt = self.dataset[item]
-        assert sample_rate == 16000
+        wav, label, filename = self.dataset[item]
 
-        audio = whisper.pad_or_trim(audio.flatten())
-        audio = self.augmenter(audio.unsqueeze(0)).squeeze(0)
+        audio = whisper.pad_or_trim(wav[0].flatten())
         mel = whisper.log_mel_spectrogram(audio)
 
-        uid = f"{speaker}-{chapter}-{str(utt).zfill(4)}"
+        uid = filename[0]
+        label = label[0]
+        label_idx = (label != self.dictionary.pad()) & (label != self.dictionary.eos())
+        target_token_ids = label[label_idx].tolist()
+        target_tokens = self.dictionary.string(target_token_ids)
+        text = token_to_word(target_tokens)
 
         return (uid, mel, text)
 
@@ -43,22 +62,20 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--model_name", default="base.en")
     parser.add_argument(
-        "--libri_dir", default="/data/sls/temp/alexhliu/data/LibriSpeech"
+        "--chime_dir",
+        default="/data/sls/d/corpora/original/chime3_Aug15_2022/CHiME3/data/audio/16kHz/isolated_1ch_track",
     )
-    parser.add_argument("--libri_split", default="test-clean")
+    parser.add_argument(
+        "--bucket_file",
+        default="/data/sls/r/u/hengjui/home/scratch/dataset/chime3_util/len_for_bucket",
+    )
+    parser.add_argument(
+        "--transcription",
+        default="/data/sls/r/u/hengjui/home/scratch/dataset/chime3_util/chime3_et05.trn_all",
+    )
+    parser.add_argument("--split", default="et05_bus_real")
 
-    parser.add_argument("--noise", action="store_true")
-    parser.add_argument("--bg", action="store_true")
-    parser.add_argument(
-        "--bg_path", default="/data/sls/r/u/hengjui/home/scratch/dataset/musan"
-    )
-    parser.add_argument("--snr", type=float, default=0.0)
-    parser.add_argument("--ir", action="store_true")
-    parser.add_argument(
-        "--ir_path",
-        default="/data/sls/scratch/nauman/datasets/rirs/RIRS_NOISES/simulated_rirs",
-    )
-    parser.add_argument("--out", default="./result/whisper_asr")
+    parser.add_argument("--out", default="./result/whisper_asr_chime3")
     parser.add_argument("--njobs", type=int, default=4)
     parser.add_argument("--batch_size", type=int, default=16)
     args = parser.parse_args()
@@ -71,17 +88,12 @@ def main():
     normalizer = EnglishTextNormalizer()
     options = whisper.DecodingOptions(language="english", without_timestamps=True)
 
-    augmenter = AudioAugmentation(
-        noise_prob=1.0 if args.noise else 0.0,
-        noise_range=[args.snr, args.snr],
-        background_noise_prob=1.0 if args.bg else 0.0,
-        background_noise_range=[args.snr, args.snr],
-        background_noise_path=args.bg_path,
-        ir_prob=1.0 if args.ir else 0.0,
-        ir_path=[args.ir_path],
+    dataset = CHiME3(
+        args.chime_dir,
+        args.bucket_file,
+        args.transcription,
+        args.split,
     )
-
-    dataset = LibriSpeech(args.libri_dir, augmenter, "test-clean")
     loader = torch.utils.data.DataLoader(
         dataset, batch_size=args.batch_size, num_workers=args.njobs
     )
