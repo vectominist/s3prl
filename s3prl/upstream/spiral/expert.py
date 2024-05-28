@@ -5,6 +5,7 @@ import torch
 import torch.nn.functional as F
 from torch.nn.utils.rnn import pad_sequence
 
+from .spiral_model import ST2VecEncoder
 from ..interfaces import UpstreamBase
 
 SAMPLE_RATE = 16000
@@ -22,9 +23,6 @@ class UpstreamExpert(UpstreamBase):
         **kwargs,
     ):
         super().__init__(**kwargs)
-
-        sys.path.append("/data/sls/r/u/hengjui/home/scratch/speech-disentangle")
-        from src.model import NBranchModel
 
         self.model = NBranchModel.load_from_checkpoint(ckpt, strict=False)
         if self.model.encoder_type == "HuBERT":

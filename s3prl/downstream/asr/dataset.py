@@ -21,10 +21,13 @@ from tqdm import tqdm
 from pathlib import Path
 
 # -------------#
+import torch
 from torch.utils.data.dataset import Dataset
+import numpy as np
 
 # -------------#
 import torchaudio
+import soundfile as sf
 
 # -------------#
 from .dictionary import Dictionary
@@ -45,7 +48,7 @@ class SequenceDataset(Dataset):
         libri_root,
         bucket_file,
         dataset_type: str = "librispeech",
-        transcription = None,
+        transcription=None,
         **kwargs,
     ):
         super(SequenceDataset, self).__init__()
@@ -55,6 +58,13 @@ class SequenceDataset(Dataset):
         self.dataset_type = dataset_type.lower()
         self.sample_rate = SAMPLE_RATE
         self.split_sets = kwargs[split]
+
+        # multi speaker
+        self.multi_spk = kwargs.get("multi_spk", False)
+        if self.multi_spk:
+            self.num_spk: int = kwargs.get("num_spk", 2)
+            self.spk_overlap: float = kwargs.get("spk_overlap", 0.0)
+            print("Multi-speaker setting: ", self.num_spk, self.spk_overlap)
 
         assert self.dataset_type in {"librispeech", "chime3"}, self.dataset_type
 
@@ -91,9 +101,11 @@ class SequenceDataset(Dataset):
         x_names = set([self._parse_x_name(x) for x in X])
         y_names = set(Y.keys())
         usage_list = list(x_names & y_names)
+        assert len(usage_list) > 0, (len(x_names), len(y_names))
 
         Y = {key: Y[key] for key in usage_list}
 
+        self.X_orig = X
         self.Y = {
             k: self.dictionary.encode_line(v, line_tokenizer=lambda x: x.split()).long()
             for k, v in Y.items()
@@ -132,7 +144,9 @@ class SequenceDataset(Dataset):
         return x.split("/")[-1].split(".")[0]
 
     def _load_wav(self, wav_path):
-        wav, sr = torchaudio.load(os.path.join(self.libri_root, wav_path))
+        # wav, sr = torchaudio.load(os.path.join(self.libri_root, wav_path))
+        wav, sr = sf.read(os.path.join(self.libri_root, wav_path))
+        wav = torch.from_numpy(wav)
         assert (
             sr == self.sample_rate
         ), f"Sample rate mismatch: real {sr}, config {self.sample_rate}"
@@ -168,7 +182,24 @@ class SequenceDataset(Dataset):
         def process_trans(transcript):
             # TODO: support character / bpe
             transcript = transcript.upper()
-            transcript = transcript.replace(".", "")
+            transcript = (
+                transcript.replace("<NOISE>", "")
+                .replace("*", "")
+                .replace(".PERIOD", "PERIOD")
+                .replace(",COMMA", "COMMA")
+                .replace("-HYPHEN", "HYPHEN")
+                .replace(":COLON", "COLON")
+                .replace("?QUESTION-MARK", "QUESTION MARK")
+                .replace("...ELLIPSIS", "ELLIPSIS")
+                .replace("-DASH", "DASH")
+                .replace(";SEMI-COLON", "SEMI COLON")
+                .replace("&AMPERSAND", "AMPERSAND")
+                .replace("(LEFT-PAREN", "LEFT PAREN")
+                .replace(")RIGHT-PAREN", "RIGHT PAREN")
+                .replace('"DOUBLE-QUOTE', "DOUBLE QUOTE")
+                .replace("'SINGLE-QUOTE", "SINGLE QUOTE")
+                .replace("!EXCLAMATION-POINT", "EXCLAMATION POINT")
+            )
             transcript = re.sub(" +", " ", transcript)
             return " ".join(list(transcript.replace(" ", "|"))) + " |"
 
@@ -203,6 +234,55 @@ class SequenceDataset(Dataset):
             self.Y[self._parse_x_name(x_file)].numpy() for x_file in self.X[index]
         ]
         filename_batch = [Path(x_file).stem for x_file in self.X[index]]
+
+        if self.multi_spk:
+            # NOTE: chime only
+            wav_batch_new = []
+            label_batch_new = []
+            for i, x_file in enumerate(self.X[index]):
+                add_x_file = []
+                x_spk = self._parse_x_name(x_file).split("_")[0]
+                for _ in range(self.num_spk - 1):
+                    while True:
+                        add_index = np.random.randint(len(self.X_orig))
+                        spk = self._parse_x_name(self.X_orig[add_index]).split("_")[0]
+                        if x_spk != spk:
+                            break
+                    add_x_file.append(self.X_orig[add_index])
+
+                add_wav = [self._load_wav(_x_file).numpy() for _x_file in add_x_file]
+                add_label = [
+                    self.Y[self._parse_x_name(_x_file)].numpy()
+                    for _x_file in add_x_file
+                ]
+
+                if self.spk_overlap < 0.01:
+                    wav = np.concatenate([wav_batch[i]] + add_wav, axis=0)
+                else:
+                    all_lens = [len(wav_batch[i])] + [len(w) for w in add_wav]
+                    min_len = min(all_lens)
+                    overlap_len = int(min_len * self.spk_overlap)
+                    total_len = sum(all_lens) - overlap_len * len(add_wav)
+
+                    wav = np.zeros(total_len, dtype=wav_batch[i].dtype)
+                    wav[: len(wav_batch[i])] = wav_batch[i]
+                    start = len(wav_batch[i]) - overlap_len
+                    for j in range(len(add_wav)):
+                        wav[start : start + len(add_wav[j])] = add_wav[j]
+                        start += len(add_wav[j]) - overlap_len
+
+                label = [label_batch[i]] + add_label
+                label = [label[j][:-1] for j in range(len(label) - 1)] + [
+                    label[-1]
+                ]  # remove <eos>
+                label = np.concatenate(label, axis=0)
+
+                wav_batch_new.append(wav)
+                label_batch_new.append(label)
+
+            wav_batch = wav_batch_new
+            label_batch = label_batch_new
+
         return (
             wav_batch,
             label_batch,

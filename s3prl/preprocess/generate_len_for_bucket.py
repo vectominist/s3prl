@@ -25,7 +25,6 @@ from joblib import Parallel, delayed
 # PREPROCESS CONFIGURATIONS #
 #############################
 def get_preprocess_args():
-
     parser = argparse.ArgumentParser(
         description="preprocess arguments for any dataset."
     )
@@ -96,9 +95,7 @@ def generate_length(args, tr_set, audio_extension):
             assert NotImplementedError
 
         print("")
-        todo = list(
-            Path(data_path).rglob("*" + audio_extension)
-        )  # '*.flac'
+        todo = list(Path(data_path).rglob("*" + audio_extension))  # '*.flac'
         print(f"Preprocessing data in: {s}, {len(todo)} audio files found.")
 
         output_dir = os.path.join(args.output_path, args.name)
@@ -132,7 +129,6 @@ def generate_length(args, tr_set, audio_extension):
 # MAIN #
 ########
 def main():
-
     # get arguments
     args = get_preprocess_args()
 
@@ -155,7 +151,42 @@ def main():
     elif "timit" in args.input_data.lower():
         SETS = ["TRAIN", "TEST"]
     elif "chime3" in args.input_data.lower():
-        SETS = ["et05_bus_real", "et05_caf_real", "et05_ped_real", "et05_str_real"]
+        # SETS = ["et05_bus_real", "et05_caf_real", "et05_ped_real", "et05_str_real"]
+        TEST_SETS = [
+            "et05_bth",
+            "et05_bus_real",
+            "et05_caf_real",
+            "et05_ped_real",
+            "et05_str_real",
+            "et05_bus_simu",
+            "et05_caf_simu",
+            "et05_ped_simu",
+            "et05_str_simu",
+        ]
+        DEV_SETS = [
+            "dt05_bth",
+            "dt05_bus_real",
+            "dt05_caf_real",
+            "dt05_ped_real",
+            "dt05_str_real",
+            "dt05_bus_simu",
+            "dt05_caf_simu",
+            "dt05_ped_simu",
+            "dt05_str_simu",
+        ]
+        TRAIN_SETS = [
+            "tr05_bth",
+            "tr05_bus_real",
+            "tr05_bus_simu",
+            "tr05_caf_real",
+            "tr05_caf_simu",
+            "tr05_org",
+            "tr05_ped_real",
+            "tr05_ped_simu",
+            "tr05_str_real",
+            "tr05_str_simu",
+        ]
+        SETS = TEST_SETS + DEV_SETS + TRAIN_SETS
     else:
         raise NotImplementedError
     # change the SETS list to match your dataset, for example:

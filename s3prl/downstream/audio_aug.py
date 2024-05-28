@@ -140,7 +140,10 @@ class AudioAugmentation:
 
         if self.num_augs > 0:
             with torch.no_grad():
-                i = np.random.choice(self.num_augs, p=self.aug_probs)
-                wav = self.transforms[i](wav, sample_rate=self.sample_rate)
+                # i = np.random.choice(self.num_augs, p=self.aug_probs)
+                # wav = self.transforms[i](wav, sample_rate=self.sample_rate)
+                for i in range(self.num_augs):
+                    if np.random.rand() < self.aug_probs[i]:
+                        wav = self.transforms[i](wav, sample_rate=self.sample_rate)
 
         return wav.squeeze(1).clamp(-1.0, 1.0)

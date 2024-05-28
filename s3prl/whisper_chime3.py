@@ -71,7 +71,7 @@ def main():
     )
     parser.add_argument(
         "--transcription",
-        default="/data/sls/r/u/hengjui/home/scratch/dataset/chime3_util/chime3_et05.trn_all",
+        default="/data/sls/r/u/hengjui/home/scratch/dataset/chime3_util/chime3.trn_all",
     )
     parser.add_argument("--split", default="et05_bus_real")
 
