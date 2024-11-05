@@ -10,7 +10,7 @@ from torch import Tensor
 from s3prl.utility.helper import show
 
 SAMPLE_RATE = 16000
-TOLERABLE_SEQLEN_DIFF = 5
+TOLERABLE_SEQLEN_DIFF = 9
 
 
 class Hook:

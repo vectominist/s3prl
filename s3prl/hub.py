@@ -3,6 +3,7 @@ from s3prl.upstream.apc.hubconf import *
 from s3prl.upstream.ast.hubconf import *
 from s3prl.upstream.audio_albert.hubconf import *
 from s3prl.upstream.baseline.hubconf import *
+from s3prl.upstream.bestrq_ast.hubconf import *
 from s3prl.upstream.byol_a.hubconf import *
 from s3prl.upstream.byol_s.hubconf import *
 from s3prl.upstream.cotraining.hubconf import *
